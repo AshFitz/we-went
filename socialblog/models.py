@@ -11,7 +11,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="social_blog_post")
     updated_on = models.DateTimeField(auto_now=True)
     description = models.TextField()
-    featured_image = CloudinaryField('image', default='placeholder')
+    featured_image = CloudinaryField('image', default='placeholder', blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
     likes= models.ManyToManyField(User, related_name='social_blog_likes', blank=True)
 
@@ -19,7 +19,7 @@ class Post(models.Model):
         ordering = ['-created_on']
 
     def __str__(self):
-        return self.titile
+        return self.title
 
     def number_of_likes(self):
         return self.likes.count()
