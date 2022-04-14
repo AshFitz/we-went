@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class SocialblogConfig(AppConfig):
+class ActivityConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'socialblog'
+    name = 'activity'
