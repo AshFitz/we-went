@@ -8,12 +8,57 @@
         <!--Activity Post's Column-->
         <div class="col-md-6 offset-md-3">
             {% for post in post_list %}
-            <div class="image-flash">
-                <p class="author">Author: {{ post.author }}</p>
-                <h2 class="card-title">{{ post.title }}</h2>
+            
+            <div class="">
+                <!-- <h2 class="">Username: {{ post.author }}</h2>
+                <h3 class="">{{ post.title }}</h3>
+                <p class="">{{ post.description | safe }}</p>
+                <h3 class="">{{ post.location }}</h3>
+                <h3 class="">{{ post.rating }}</h3>
+                <img src="{{ post.featured_image.url}}">
+                <p>{{ post.number_of_likes }}</p>
+                <p>{{ post. }}</p>
+                <h2 class="">{{ post.created_on|timesince }} ago</h2> -->
+                        <!-- {% for comment in post.comments.all %}
+                        {{ comment.name }}
+                        {{ comment.body }}
+                        {% endfor %} -->
             </div>
-{% endfor %}
 
+
+
+            <div class="container post-container">
+                <div class="row">
+                    <div class="col-12">
+                        <h1>{{ post.author }}</h1>
+                    </div>
+                    <div class="col-12">
+                        <h1>{{ post.title }}</h1>
+                    </div>
+                    <div class="col-12">
+                        <h2 class="post-description">{{ post.description | safe }}</h2>
+                    </div>
+                    <div class="col-12">
+                        <h2>{{ post.location }}</h2>
+                    </div>
+                    <div class="col-6">
+                        <h2 class="">{{ post.rating }}</h2>
+                    </div>
+                    <div class="col-12 image-container">
+                        <img src="{{ post.featured_image.url}}">
+                    </div>
+                    <div class="col-6">
+                        <p>{{ post.number_of_likes }}</p>
+                    </div>>
+                    <div class="col-12">
+                        {% for comment in post.comments.all %}
+                        {{ comment.name }}
+                        {{ comment.body }}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
