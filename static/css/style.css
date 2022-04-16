@@ -12,12 +12,27 @@ h2 {
     line-height: inherit!important;
     font-size: inherit!important;
     font-family: inherit!important;
+    color: #EAE6E5!important;
  }
 
 .image-container { 
     display: flex;
     flex-direction: column;
     text-align: center;
+}
+
+.post-container {
+    border: 2px solid #424B54;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.main-bg {
+    background-color: #212529;
+}
+
+.post-text {
+    color: #EAE6E5;
 }
 
 
