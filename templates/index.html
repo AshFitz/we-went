@@ -2,44 +2,25 @@
 
 {% block content %}
 
-<div class="container-fluid">
+<div class="container-fluid main-bg">
     <div class="row">
 
         <!--Activity Post's Column-->
         <div class="col-md-6 offset-md-3">
             {% for post in post_list %}
-            
-            <div class="">
-                <!-- <h2 class="">Username: {{ post.author }}</h2>
-                <h3 class="">{{ post.title }}</h3>
-                <p class="">{{ post.description | safe }}</p>
-                <h3 class="">{{ post.location }}</h3>
-                <h3 class="">{{ post.rating }}</h3>
-                <img src="{{ post.featured_image.url}}">
-                <p>{{ post.number_of_likes }}</p>
-                <p>{{ post. }}</p>
-                <h2 class="">{{ post.created_on|timesince }} ago</h2> -->
-                        <!-- {% for comment in post.comments.all %}
-                        {{ comment.name }}
-                        {{ comment.body }}
-                        {% endfor %} -->
-            </div>
-
-
-
             <div class="container post-container">
-                <div class="row">
+                <div class="row post-text">
                     <div class="col-12">
                         <h1>{{ post.author }}</h1>
                     </div>
                     <div class="col-12">
-                        <h1>{{ post.title }}</h1>
+                        <h2>Title: {{ post.title }}</h2>
                     </div>
                     <div class="col-12">
-                        <h2 class="post-description">{{ post.description | safe }}</h2>
+                        <h2 class="post-description">Description: {{ post.description | safe }}</h2>
                     </div>
                     <div class="col-12">
-                        <h2>{{ post.location }}</h2>
+                        <h2>Location: {{ post.location }}</h2>
                     </div>
                     <div class="col-6">
                         <h2 class="">{{ post.rating }}</h2>
@@ -49,7 +30,7 @@
                     </div>
                     <div class="col-6">
                         <p>{{ post.number_of_likes }}</p>
-                    </div>>
+                    </div>
                     <div class="col-12">
                         {% for comment in post.comments.all %}
                         {{ comment.name }}
