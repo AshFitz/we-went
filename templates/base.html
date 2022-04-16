@@ -37,7 +37,12 @@
                 <li><a class="dropdown-item" href="#">My Likes</a></li>
                 <li><a class="dropdown-item" href="#">My Posts</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign Out</a></li>
+                {% if user.is_authenticated %}
+                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                {% else %}
+                <li><a class="dropdown-item" href="{% url 'account_login' %}">Log In</a></li>
+                <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a></li>
+                {% endif %}
               </ul>
               </li>
             </ul>
