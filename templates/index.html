@@ -2,9 +2,10 @@
 
 {% block content %}
 
+{% load crispy_forms_tags %}
+
 <div class="container-fluid main-bg">
     <div class="row">
-
         <!--Activity Post's Column-->
         <div class="col-md-6 offset-md-3">
             {% for post in post_list %}
@@ -37,10 +38,31 @@
                         {{ comment.body }}
                         {% endfor %}
                     </div>
+                    <div class="col-12">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <h3>Add a comment:</h3>
+                                    <p>{{ user.username }}</p>
+                                    <form method="post">
+                                        {{ comment_form | crispy }}
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-success">Comment</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            {% endfor %}
         </div>
+            {% endfor %}
+
+            <!-- {% if user.is_authenticated %} -->
+
+            
+            <!-- {% endif %} -->
+        
     </div>
 </div>
 {%endblock%}
