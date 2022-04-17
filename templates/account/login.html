@@ -13,8 +13,9 @@
 {% get_providers as socialaccount_providers %}
 
 
-<p>{% blocktrans %}If you have not created an account yet, then please
-<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+  <p>{% blocktrans %}Welcome back to we went. To add a post, leave a comment or like a post, please log in. If you 
+  have not created an account yet, then <a href="{{ signup_url }}">sign up</a>
+  first.{% endblocktrans %}</p>
 
 <form class="login" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
