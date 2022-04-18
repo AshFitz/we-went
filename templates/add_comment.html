@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container post-container">
+    <div class="row post-text">
+        <div class="col-12">
+            <h1>{{ post.author }}</h1>
+        </div>
+        <div class="col-12">
+            <h2>Title: {{ post.title }}</h2>
+        </div>
+        <div class="col-12">
+            <h2 class="post-description">Description: {{ post.description | safe }}</h2>
+        </div>
+        <div class="col-12">
+            <h2>Location: {{ post.location }}</h2>
+        </div>
+        <div class="col-6">
+            <h2 class="">{{ post.rating }}</h2>
+        </div>
+        <div class="col-12 image-container">
+            <img src="{{ post.featured_image.url}}">
+        </div>
+        <div class="col-6">
+            <p>{{ post.number_of_likes }}</p>
+        </div>
+        <div class="col-12">
+            {% for comment in comments %}
+            {{ comment.name }}
+            {{ comment.body }}
+            {% endfor %}
+        </div>
+        <div class="col">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <a href="{% url 'comment' post.slug %}">
+                            <i class="fas fa-comment"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h3>Add a comment:</h3>
+                        <p>{{ user.username }}</p>
+                        <form method="post">
+
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-success">Comment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{%endblock%}
