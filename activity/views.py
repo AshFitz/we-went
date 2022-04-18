@@ -20,13 +20,39 @@ class Comment(View):
         queryset = Post
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.order_by("created_on")
-        print(comments)
         return render(
             request,
             "add_comment.html",
             {
                 "post": post,
                 "comments": comments,
+                "comment_form": CommentForm()
+            }
+        )
+
+
+    def post(self, request, slug, *args, **kwargs):
+        queryset = Post
+        post = get_object_or_404(queryset, slug=slug)
+        comments = post.comments.order_by("created_on")
+
+        comment_form = CommentForm(data=request.POST)
+
+        if comment_form.is_valid():
+            comment_form.instance.name = request.user.username
+            comment = comment_form.save(commit=False)
+            comment.post = post
+            comment.save()
+        else:
+            comment_form = CommentForm()
+
+        return render(
+            request,
+            "add_comment.html",
+            {
+                "post": post,
+                "comments": comments,
+                "comment_form": comment_form
             }
         )
 
@@ -36,27 +62,26 @@ class Comment(View):
 
 
 
+    # def add_comment(request, slug, *args, **kwargs):
+    #     queryset = Post
+    #     post = get_object_or_404(queryset, slug=slug)
+    #     comments = post.comments.filter().order_by("-created_on")
 
-# def add_comment(request, slug, *args, **kwargs):
-#     queryset = Post
-#     post = get_object_or_404(queryset, slug=slug)
-#     comments = post.comments.filter().order_by("-created_on")
-
-#     # post = get_object_or_404(Post, pk=slug)
-#     # comment = Comment.objects.filter(post=slug)
+    #     # post = get_object_or_404(Post, pk=slug)
+    #     # comment = Comment.objects.filter(post=slug)
 
 
-#     # comment = Post.objects.filter(slug=slug)
-#     # post = get_object_or_404(comment, slug=slug)
-#     print(comments)
-#     print(post)
-#     # post = Post.objects.filter(slug=slug)
-#     # comment = get_object_or_404(post, slug=slug)
+    #     # comment = Post.objects.filter(slug=slug)
+    #     # post = get_object_or_404(comment, slug=slug)
+    #     print(comments)
+    #     print(post)
+    #     # post = Post.objects.filter(slug=slug)
+    #     # comment = get_object_or_404(post, slug=slug)
 
-#     context = {
-#         'post': post,
-#         'comments': comments,
-#     }
+    #     context = {
+    #         'post': post,
+    #         'comments': comments,
+    #     }
 
-#     return render(
-#         request, 'add_comment.html', context)
+    #     return render(
+    #         request, 'add_comment.html', context)
