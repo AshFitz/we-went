@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+{% load crispy_forms_tags %}
+
 <div class="container post-container">
     <div class="row post-text">
         <div class="col-12">
@@ -48,7 +50,7 @@
                         <h3>Add a comment:</h3>
                         <p>{{ user.username }}</p>
                         <form method="post">
-
+                            {{ comment_form | crispy }}
                             {% csrf_token %}
                             <button type="submit" class="btn btn-success">Comment</button>
                         </form>
