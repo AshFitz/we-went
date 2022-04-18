@@ -2,8 +2,6 @@
 
 {% block content %}
 
-{% load crispy_forms_tags %}
-
 <div class="container-fluid main-bg">
     <div class="row">
         <!--Activity Post's Column-->
@@ -45,21 +43,6 @@
                                     <a href="{% url 'comment' post.slug %}">
                                         <i class="fas fa-comment"></i>
                                     </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-                                    <h3>Add a comment:</h3>
-                                    <p>{{ user.username }}</p>
-                                    <form method="post">
-                                        {{ comment_form | crispy }}
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-success">Comment</button>
-                                    </form>
                                 </div>
                             </div>
                         </div>
