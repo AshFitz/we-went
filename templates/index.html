@@ -38,6 +38,17 @@
                         {{ comment.body }}
                         {% endfor %}
                     </div>
+                    <div class="col">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <a href="{% url 'comment' post.slug %}">
+                                        <i class="fas fa-comment"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-12">
                         <div class="container">
                             <div class="row">
