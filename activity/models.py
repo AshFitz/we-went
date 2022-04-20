@@ -13,7 +13,8 @@ class Post(models.Model):
     description = models.TextField()
     featured_image = CloudinaryField('image', blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
-    likes= models.ManyToManyField(User, related_name='activity_likes', blank=True)
+    likes = models.ManyToManyField(User, related_name='activity_likes', blank=True)
+    like_count = models.BigIntegerField(default='0')
 
     class Meta:
         ordering = ['-created_on']
@@ -26,7 +27,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
 
-    post= models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
@@ -37,3 +38,10 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
+
+# class Like(models.Model):
+#     liker = models.ForeignKey(User, on_delete=models.CASCADE)
+#     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='like_post')
+
+#     def save(self, *args, **kwargs):
+#         super(Like, self).save(*args, **kwargs)
