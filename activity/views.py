@@ -1,13 +1,16 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
+from django.http import JsonResponse
 from .models import Post, Comment
 from .forms import CommentForm
+
 
 class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.order_by('-created_on')
     template_name = 'index.html'
 
+    #maybe not needed now.
     def get_context_data(self, **kwargs):
         context = super(PostList, self).get_context_data(**kwargs)
         context["comment_form"] = CommentForm()
@@ -15,7 +18,7 @@ class PostList(generic.ListView):
 
 
 class Comment(View):
-
+    #gets comments
     def get(self, request, slug, *args, **kwargs):
         queryset = Post
         post = get_object_or_404(queryset, slug=slug)
@@ -30,7 +33,7 @@ class Comment(View):
             }
         )
 
-
+    #post a comment.
     def post(self, request, slug, *args, **kwargs):
         queryset = Post
         post = get_object_or_404(queryset, slug=slug)
@@ -56,32 +59,21 @@ class Comment(View):
             }
         )
 
+def like(request):
+    result = 'Data'
+    if request.POST.get('action') == 'post':
+        result = 'Data'
+        id = int(request.POST.get('postid'))
+        post = get_object_or_404(Post, id=id)
+        if post.likes.filter(id=request.user.id).exists():
+            post.likes.remove(request.user)
+            post.like_count -= 1
+            result = post.like_count
+            post.save()
+        else:
+            post.likes.add(request.user)
+            post.like_count += 1
+            result = post.like_count
+            post.save()
 
-
-
-
-
-
-    # def add_comment(request, slug, *args, **kwargs):
-    #     queryset = Post
-    #     post = get_object_or_404(queryset, slug=slug)
-    #     comments = post.comments.filter().order_by("-created_on")
-
-    #     # post = get_object_or_404(Post, pk=slug)
-    #     # comment = Comment.objects.filter(post=slug)
-
-
-    #     # comment = Post.objects.filter(slug=slug)
-    #     # post = get_object_or_404(comment, slug=slug)
-    #     print(comments)
-    #     print(post)
-    #     # post = Post.objects.filter(slug=slug)
-    #     # comment = get_object_or_404(post, slug=slug)
-
-    #     context = {
-    #         'post': post,
-    #         'comments': comments,
-    #     }
-
-    #     return render(
-    #         request, 'add_comment.html', context)
+        return JsonResponse({'result': result, })
