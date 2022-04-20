@@ -28,7 +28,32 @@
                         <img src="{{ post.featured_image.url}}">
                     </div>
                     <div class="col-6">
-                        <p>{{ post.number_of_likes }}</p>
+                        <p>
+                            {% if user.is_authenticated %}
+                            <form class="d-none" method="POST">
+                                {% csrf_token %}
+                            </form> 
+                            {% for i in post.likes.all %}
+                            {% if user in post.activity_likes %}
+                            {% comment %} {% if user in post.likes %} {% endcomment %}
+                    
+                            <button type="submit" name="post_id" value="{{post.id}}" class="like-button" data-url={% url 'like'%}><i class="fas fa-heart">
+                            </i></button>
+
+                            {% else %}
+
+                            <button type="submit" name="post_id" value="{{post.id}}" class="like-button" data-url={% url 'like'%}><i class="far fa-heart">
+                            </i></button>
+
+                            {% endif %}
+
+
+                            {%endfor%}
+                            {% endif %}
+                            
+                            <span id="{{post.id}}_like_count">{{ post.like_count }}</span>
+                        </p>
+                        
                     </div>
                     <div class="col-12">
                         {% for comment in post.comments.all %}
@@ -50,14 +75,31 @@
                 </div>
             </div>
             {% endfor %}
-        </div>
-            
-
-            <!-- {% if user.is_authenticated %} -->
-
-            
-            <!-- {% endif %} -->
-        
+        </div>       
     </div>
 </div>
+
+<script>
+
+$(document).on('click', '.like-button', function (e) {
+    let btn = e.currentTarget.value
+    e.preventDefault();
+    let like_url = $('.like-button').attr("data-url")
+    $.ajax({
+        type: 'POST',
+        url: like_url,
+        data: {
+            postid: btn,
+            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+            action: 'post',
+        },
+        success: function (json) {
+            document.getElementById(`${btn}_like_count`).innerHTML = json['result']
+        },
+        error: function (xhr, errmsg, err) {
+        }
+    });
+    })
+</script>
+
 {%endblock%}
