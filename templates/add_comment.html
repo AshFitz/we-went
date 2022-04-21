@@ -24,7 +24,7 @@
             <img src="{{ post.featured_image.url}}">
         </div>
         <div class="col-6">
-            <p>{{ post.number_of_likes }}</p>
+            <p>{{ post.like_count }}</p>
         </div>
         <div class="col-12">
             {% for comment in comments %}
@@ -47,6 +47,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
+                        
+                        {% if user.is_authenticated %}
+
                         <h3>Add a comment:</h3>
                         <p>{{ user.username }}</p>
                         <form method="post">
@@ -54,6 +57,9 @@
                             {% csrf_token %}
                             <button type="submit" class="btn btn-success">Comment</button>
                         </form>
+
+                        {% endif %}
+
                     </div>
                 </div>
             </div>
