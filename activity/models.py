@@ -25,6 +25,10 @@ class Post(models.Model):
     def number_of_likes(self):
         return self.likes.count()
 
+    def liked_by_user(self):
+        return self.likes.values_list('id', flat=True)
+
+
 class Comment(models.Model):
 
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
