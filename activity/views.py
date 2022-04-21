@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import JsonResponse
+from django.http import HttpResponseRedirect
 from .models import Post, Comment
 from .forms import CommentForm
 
@@ -46,6 +47,8 @@ class Comment(View):
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
+            return HttpResponseRedirect( "/" )
+
         else:
             comment_form = CommentForm()
 
