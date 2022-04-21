@@ -13,6 +13,7 @@
                         <h1>{{ post.author }}</h1>
                     </div>
                     <div class="col-12">
+                        <h2>ID: {{ post.id }}</h2>
                         <h2>Title: {{ post.title }}</h2>
                     </div>
                     <div class="col-12">
@@ -30,13 +31,11 @@
                     <div class="col-6">
                         <p>
                             {% if user.is_authenticated %}
-                            <form class="d-none" method="POST">
-                                {% csrf_token %}
-                            </form> 
-                            {% for i in post.likes.all %}
-                            {% if user in post.activity_likes %}
+
+                           
+                            {% if request.user.id in post.liked_by_user %}
                             {% comment %} {% if user in post.likes %} {% endcomment %}
-                    
+                            {% csrf_token %}
                             <button type="submit" name="post_id" value="{{post.id}}" class="like-button" data-url={% url 'like'%}><i class="fas fa-heart">
                             </i></button>
 
@@ -48,7 +47,7 @@
                             {% endif %}
 
 
-                            {%endfor%}
+                        
                             {% endif %}
                             
                             <span id="{{post.id}}_like_count">{{ post.like_count }}</span>
