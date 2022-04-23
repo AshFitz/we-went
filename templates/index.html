@@ -13,7 +13,6 @@
                         <h1>{{ post.author }}</h1>
                     </div>
                     <div class="col-12">
-                        <h2>ID: {{ post.id }}</h2>
                         <h2>Title: {{ post.title }}</h2>
                     </div>
                     <div class="col-12">
@@ -35,7 +34,9 @@
                            
                             {% if request.user.id in post.liked_by_user %}
                             {% comment %} {% if user in post.likes %} {% endcomment %}
+                            <form class="d-none" method="POST">
                             {% csrf_token %}
+                            </form>
                             <button type="submit" name="post_id" value="{{post.id}}" class="like-button" data-url={% url 'like'%}><i class="fas fa-heart">
                             </i></button>
 
@@ -64,7 +65,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-                                    <a href="{% url 'comment' post.slug %}">
+                                    <a href="{% url 'comment' post.id %}">
                                         <i class="fas fa-comment"></i>
                                     </a>
                                 </div>
@@ -89,7 +90,7 @@ $(document).on('click', '.like-button', function (e) {
         url: like_url,
         data: {
             postid: btn,
-            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+            csrfmiddlewaretoken: '{{ csrf_token }}',
             action: 'post',
         },
         success: function (json) {
