@@ -7,7 +7,7 @@ class Post(models.Model):
     location = models.CharField(max_length=220)
     rating = models.DecimalField(
         max_digits=6, decimal_places=2)
-    slug = models.SlugField(max_length=220, unique=True)
+    #slug = models.SlugField(max_length=220, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="activity_post")
     updated_on = models.DateTimeField(auto_now=True)
     description = models.TextField()
@@ -43,9 +43,3 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
 
-# class Like(models.Model):
-#     liker = models.ForeignKey(User, on_delete=models.CASCADE)
-#     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='like_post')
-
-#     def save(self, *args, **kwargs):
-#         super(Like, self).save(*args, **kwargs)
