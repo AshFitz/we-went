@@ -3,7 +3,9 @@ from django.urls import path
 
 urlpatterns = [
     path('like/', views.like, name='like'),
-    path("", views.PostList.as_view(), name="home",),
-    path('<slug:slug>/', views.Comment.as_view(), name='comment'),  
+    path("add/", views.add_post, name="add_post"),
+    path('post/<int:pk>', views.add_post, name="post_detail"),
+    path("", views.PostList.as_view(), name="home"),
+    path('comment/<int:post_id>/', views.Comment.as_view(), name='comment'),
     #path('like/<slug:slug>/', views.PostLike.as_view(), name='post_like'),
 ]
