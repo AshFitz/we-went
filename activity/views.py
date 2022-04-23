@@ -1,9 +1,10 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.http import HttpResponseRedirect
 from .models import Post, Comment
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 
 
 class PostList(generic.ListView):
@@ -12,17 +13,18 @@ class PostList(generic.ListView):
     template_name = 'index.html'
 
     #maybe not needed now.
-    def get_context_data(self, **kwargs):
-        context = super(PostList, self).get_context_data(**kwargs)
-        context["comment_form"] = CommentForm()
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super(PostList, self).get_context_data(**kwargs)
+    #     context["comment_form"] = CommentForm()
+    #     return context
 
 
 class Comment(View):
-    #gets comments
-    def get(self, request, slug, *args, **kwargs):
-        queryset = Post
-        post = get_object_or_404(queryset, slug=slug)
+    """
+    Function to retreive the comment from Db
+    """
+    def get(self, request, post_id):
+        post = get_object_or_404(Post, pk=post_id)
         comments = post.comments.order_by("created_on")
         return render(
             request,
@@ -34,10 +36,12 @@ class Comment(View):
             }
         )
 
-    #post a comment.
-    def post(self, request, slug, *args, **kwargs):
+    """
+    Function to to add a comment to a specific post
+    """
+    def post(self, request, post_id, *args, **kwargs):
         queryset = Post
-        post = get_object_or_404(queryset, slug=slug)
+        post = get_object_or_404(queryset, pk=post_id)
         comments = post.comments.order_by("created_on")
 
         comment_form = CommentForm(data=request.POST)
@@ -47,7 +51,7 @@ class Comment(View):
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
-            return HttpResponseRedirect( "/" )
+            return HttpResponseRedirect("/")
 
         else:
             comment_form = CommentForm()
@@ -61,7 +65,9 @@ class Comment(View):
                 "comment_form": comment_form
             }
         )
-
+"""
+View to handle the like functionality of a post
+"""
 def like(request):
     result = 'Data'
     if request.POST.get('action') == 'post':
@@ -80,3 +86,27 @@ def like(request):
             post.save()
 
         return JsonResponse({'result': result, })
+
+"""
+View to add a post to the database
+"""
+@login_required
+def add_post(request):
+    if request.method == 'POST':
+        post_form = PostForm(request.POST, request.FILES)
+        
+        if post_form.is_valid():
+            post_form = post_form.save(commit=False)
+            post_form.author = request.user
+            post_form.save()
+
+            #messages.success(request, "Post Created!")
+            return redirect("home")
+    else:
+        post_form = PostForm()
+        
+
+    context = {
+        'post_form': post_form
+    }
+    return render(request, "add_post.html", context)
