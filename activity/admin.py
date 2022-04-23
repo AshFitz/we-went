@@ -9,9 +9,9 @@ class CommentItemInline(admin.TabularInline):
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
 
-    list_display = ('title', 'slug', 'rating', 'created_on')
+    list_display = ('title','rating', 'created_on')
     search_fields = ['title', 'description', 'rating']
-    prepopulated_fields = {'slug': ('title',)}
+    #prepopulated_fields = {'slug': ('title',)}
     list_filter = ('created_on', 'rating')
     summernote_fileds = ('description')
     inlines = [CommentItemInline]
