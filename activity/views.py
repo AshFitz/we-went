@@ -110,3 +110,44 @@ def add_post(request):
         'post_form': post_form
     }
     return render(request, "add_post.html", context)
+
+
+"""
+View to edit a post and update the databsae
+"""
+@login_required
+def edit_post(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('edit_post', args=[post.id]))
+        else:
+            print("do this")
+            #messages.error(request, "Failed to edit post. Please try again")
+
+    else:
+        form = PostForm(instance=post)
+        #messages.info(request, f'You are editing {post.tilte}')
+
+    post_title = 'Edit a post'
+    template = 'edit_post.html'
+    context = {
+        'form':form,
+        'post':post,
+    }
+
+    return render(request, template, context)
+
+
+"""
+View to delete a post and update the database
+"""
+@login_required
+def delete_post(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    post.delete()
+    #messages.sucess(request, 'You have deleted your post")
+
+    return redirect(reverse('home'))
