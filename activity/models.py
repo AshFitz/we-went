@@ -1,8 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from profiles.models import UserProfile
+
 
 class Post(models.Model):
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True, blank=True, related_name='user_posts')
     title = models.CharField(max_length=220, unique=True)
     location = models.CharField(max_length=220)
     rating = models.DecimalField(
