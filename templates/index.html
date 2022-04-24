@@ -66,8 +66,14 @@
                             <div class="row">
                                 <div class="col">
                                     <a href="{% url 'comment' post.id %}">
-                                        <i class="fas fa-comment"></i>
+                                        <i class="fas fa-comment">Comment</i>
                                     </a>
+
+                                    <a href="{% url 'edit_post' post.id %}">
+                                        <i class="fas fa-box">Edit</i>
+                                    </a>
+
+                                    <a class="btn btn-danger" aria-label="delete button" id="delete-button" href="{% url 'delete_post' post.id %}">Delete</a>
                                 </div>
                             </div>
                         </div>
