@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="container post-container">
+    <div class="row post-text">
+        <div class="col-12">
+          <form action= ""> 
+            {{ form | crispy }}
+          </form>
+        </div>
+    </div>
+</div>
+{%endblock%}
