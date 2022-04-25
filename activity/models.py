@@ -5,7 +5,7 @@ from profiles.models import UserProfile
 
 
 class Post(models.Model):
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True, blank=True, related_name='user_posts')
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True, related_name='user_posts')
     title = models.CharField(max_length=220, unique=True)
     location = models.CharField(max_length=220)
     rating = models.DecimalField(
@@ -33,7 +33,6 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(max_length=80)
     email = models.EmailField()
