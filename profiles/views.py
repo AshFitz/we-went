@@ -8,19 +8,28 @@ from activity.models import Post
 #Profile function
 
 def profile(request):
-    #profile = UserProfile.objects.create(user=request.user)
     profile = get_object_or_404(UserProfile, user=request.user)
-   
-   
+
+    posts = profile.user_posts.all()
+    # posts = profile.post_set.all()
     template = 'profiles/profile.html'
     context = {
         'profile': profile,
-        # 'posts': posts
+        'posts': posts
     }
 
     return render(request, template, context)
 
+# def post_history(request, pk):
+#     post = get_object_or_404(Post, pk=pk)
+#     print(post)
+    
+#     template = 'profiles/profile.html'
+#     context = {
+#         'post': post
+#     }
 
+#     return render(request, template, context)
 #Post history
 
 
