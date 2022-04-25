@@ -3,8 +3,9 @@ from django.views import generic, View
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.http import HttpResponseRedirect
-from .models import Post, Comment
+from .models import Post, Comment, UserProfile
 from .forms import CommentForm, PostForm
+
 
 
 class PostList(generic.ListView):
@@ -32,7 +33,8 @@ class Comment(View):
             {
                 "post": post,
                 "comments": comments,
-                "comment_form": CommentForm()
+                "comment_form": CommentForm(),
+                
             }
         )
 
@@ -65,6 +67,33 @@ class Comment(View):
                 "comment_form": comment_form
             }
         )
+
+
+"""
+View to edit a comment on a post
+"""
+def edit_comment(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    user = get_object_or_404(Comment, user=request.user, post=post_id)
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST, instance=user)
+        if comment_form.is_valid():
+            comment_form.save()
+            # messages.success(request, f'You have updated your comment on {post.title}.')
+            return redirect(reverse('edit_comment', args=[post_id]))
+        # else:
+            # messages.error(request, f'Sorry we are unable to update your comment on {post.title}, please try again.')
+    else:
+        comment_form = CommentForm(instance=user)
+
+    template = 'edit_post.html'
+    context = {
+        'post': post,
+        'user': user,
+        'comment_form': comment_form,
+    }
+    return render(request, template, context)
+
 """
 View to handle the like functionality of a post
 """
@@ -94,9 +123,11 @@ View to add a post to the database
 def add_post(request):
     if request.method == 'POST':
         post_form = PostForm(request.POST, request.FILES)
-        
+        profile = get_object_or_404(UserProfile, user=request.user)
+
         if post_form.is_valid():
             post_form = post_form.save(commit=False)
+            post_form.user_profile = profile
             post_form.author = request.user
             post_form.save()
 
@@ -104,7 +135,6 @@ def add_post(request):
             return redirect("home")
     else:
         post_form = PostForm()
-        
 
     context = {
         'post_form': post_form
@@ -151,3 +181,5 @@ def delete_post(request, post_id):
     #messages.sucess(request, 'You have deleted your post")
 
     return redirect(reverse('home'))
+
+
