@@ -2,8 +2,20 @@
 
 {% block content %}
 <div class="h1">Profile</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {{ profile.user}}
 
-{{ profile.user }}
+            {% if posts %}
+            {% for post in posts %}
+            {{ post.location }}
+
+            {% endfor %}
+            {% endif%}
+        </div>
+    </div>
+</div>
 
 
 {%endblock%}
