@@ -94,6 +94,13 @@ def edit_comment(request, post_id):
     }
     return render(request, template, context)
 
+
+def delete_comment(request, post_id):
+    comment = get_object_or_404(Comment, user=request.user, post=post_id)
+    comment.delete()
+    #message.success(request, 'Your comment has been deleted.')
+    return redirect(reverse('home'))
+
 """
 View to handle the like functionality of a post
 """
