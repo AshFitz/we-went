@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>You searched for '{{ search }}'</h1>
+        </div>
+    </div>
+</div>
+
+{% for post in post_search %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>{{ post.author }}</h1>
+        </div>
+        <div class="col-12">
+            <h2>Title: {{ post.title }}</h2>
+        </div>
+        <div class="col-12">
+            <h2 class="post-description">Description: {{ post.description | safe }}</h2>
+        </div>
+        <div class="col-12">
+            <h2>Location: {{ post.location }}</h2>
+        </div>
+        <div class="col-6">
+            <h2 class="">{{ post.rating }}</h2>
+        </div>
+        <div class="col-12 image-container">
+            <img src="{{ post.featured_image.url}}">
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+
+{%endblock%}
