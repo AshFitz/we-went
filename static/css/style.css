@@ -1,6 +1,5 @@
 h1 {
     font-size: 30px;
-    
 }
 
 h2 {
@@ -35,4 +34,26 @@ h2 {
     color: #EAE6E5;
 }
 
+/*---- Profile styling --*/
 
+.profile-nav {
+    position: sticky;
+    top: 3rem;
+}
+
+/*---- To style later --*/
+.profile-container {
+
+}
+
+#post-panel {
+
+}
+
+#likes-panel {
+    display: none;
+}
+
+#logout-panel {
+    display: none;
+}
