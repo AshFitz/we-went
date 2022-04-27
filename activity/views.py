@@ -42,6 +42,7 @@ class Comment(View):
     """
     Function to to add a comment to a specific post
     """
+    @login_required
     def post(self, request, post_id, *args, **kwargs):
         queryset = Post
         post = get_object_or_404(queryset, pk=post_id)
@@ -73,6 +74,7 @@ class Comment(View):
 """
 View to edit a comment on a post
 """
+@login_required
 def edit_comment(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     user = get_object_or_404(Comment, user=request.user, post=post_id)
@@ -105,6 +107,7 @@ def delete_comment(request, post_id):
 """
 View to handle the like functionality of a post
 """
+@login_required
 def like(request):
     result = 'Data'
     if request.POST.get('action') == 'post':
