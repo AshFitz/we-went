@@ -1,21 +1,99 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="h1">Profile</div>
-<div class="container">
-    <div class="row">
-        <div class="col">
-            {{ profile.user}}
+<div class="h1">Welcome back, {{profile.user}}</div>
 
-            {% if posts %}
-            {% for post in posts %}
-            {{ post.location }}
 
-            {% endfor %}
-            {% endif%}
+<div class="container profile-container">
+    <section class="row mb-5">
+        <!--Nav for profile-->
+        <div class="col-md-4 col-12">
+            <div class="profile-nav">
+                <ul class="list-group">
+                    <a class="m-1" href='#' aria-label="profile nav My account button">
+                        <li class="list-group-item active" id="post-nav-button"><i class="fas fa-fw fa-user pr-1"></i>My Posts</li>
+                    </a>
+                    <a class="m-1" href='#' aria-label="profile nav my orders button">
+                        <li class="list-group-item" id="likes-nav-button"><i class="fas fa-fw fa-heart pr-1"></i>My Likes</li>
+                    </a>  
+                    <a class="m-1" href='#' aria-label="profile nav logout button">
+                        <li class="list-group-item" id="logout-nav-button"><i class="fas fa-fw fa-sign-out-alt pr-1"></i>Log Out</li>
+                    </a>      
+                </ul>
+            </div>
         </div>
+        <div class="col" id="post-panel">
+            {% if posts %}
+        {% for post in posts %}
+            <div class="col-12">
+                <h2>Title: {{ post.title }}</h2>
+            </div>
+            <div class="col-12">
+                <h2 class="post-description">Description: {{ post.description | safe }}</h2>
+            </div>
+            <div class="col-12">
+                <h2>Location: {{ post.location }}</h2>
+            </div>
+            <div class="col-6">
+                <h2 class="">{{ post.rating }}</h2>
+            </div>
+            <div class="col-12 image-container">
+                <img src="{{ post.featured_image.url}}">
+            </div>
+            <span id="{{post.id}}_like_count">Number of likes:{{ post.like_count }}</span>
+        {% endfor %}
+        {% endif%}
+        </div>
+
+        <div class="col" id="likes-panel">LIKES
+            {% if likes %}
+            {% for like in likes %}
+            <div class="col-12">
+                <h2>Title: {{ like.title }}</h2>
+            </div>
+            <div class="col-12">
+                <h2 class="post-description">Description: {{ like.description | safe }}</h2>
+            </div>
+            <div class="col-12">
+                <h2>Location: {{ like.location }}</h2>
+            </div>
+            <div class="col-6">
+                <h2 class="">{{ like.rating }}</h2>
+            </div>
+            <div class="col-12 image-container">
+                <img src="{{ like.featured_image.url}}">
+            </div>
+           
+            {% endfor %}
+            {% endif %}
+    </div>
+        
+<!-- Logout Panel -->
+<div class="col-md-8 col-12 checkout_row" id="logout-panel">
+    <div class="profile-dashboard text-center">
+        <h2 class="text-black text-center text-heading-size">Log out?</h2>
+        <p class="text-black text-center">Are you sure you wish to log out?</p>
+        <a href="#" aria-label="Log out" class="btn orange-btn text-center text-white rounded mb-2">Log Out</a>
+        <a href="#" aria-label="Continue Shopping" class="btn orange-btn text-center text-white rounded mb-2">Continue Shopping</a>
     </div>
 </div>
+    </section>
+</div>
+
+<!--Post container-->
+{% comment %} <div class="container">
+    <div class="row">
+        <div class="col">
+        
+        </div>
+    </div>
+</div> {% endcomment %}
+<!-- Likes container -->
+{% comment %} <div class="container"> 
+    <div class="row">
+        
+    </div>
+</div> {% endcomment %}
 
 
 {%endblock%}
