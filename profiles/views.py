@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import UserProfile
-from activity.models import Post
+from activity.models import Post, Comment
 
 # Create your views here.
 
@@ -11,10 +11,13 @@ def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
 
     posts = profile.user_posts.all()
-    # posts = profile.post_set.all()
+    likes = Post.objects.filter(likes=request.user.id)
+    # comments = Comment.objects.filter()
     template = 'profiles/profile.html'
     context = {
         'profile': profile,
+        # 'comments': comments,
+        'likes': likes,
         'posts': posts
     }
 
