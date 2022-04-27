@@ -10,5 +10,6 @@ urlpatterns = [
     #path('post/<int:pk>', views.add_post, name="post_detail"),
     path("", views.PostList.as_view(), name="home"),
     path('comment/<int:post_id>/', views.Comment.as_view(), name='comment'),
+    path('searched_posts/', views.search_posts, name='searched_posts'),
     #path('like/<slug:slug>/', views.PostLike.as_view(), name='post_like'),
 ]
