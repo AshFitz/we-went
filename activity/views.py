@@ -100,7 +100,7 @@ def delete_comment(request, post_id):
     comment = get_object_or_404(Comment, user=request.user, post=post_id)
     comment.delete()
     #message.success(request, 'Your comment has been deleted.')
-    return redirect(reverse('home'))
+    return redirect(reverse('activity'))
 
 """
 View to handle the like functionality of a post
@@ -140,7 +140,7 @@ def add_post(request):
             post_form.save()
 
             #messages.success(request, "Post Created!")
-            return redirect("home")
+            return redirect("activity")
     else:
         post_form = PostForm()
 
@@ -188,7 +188,7 @@ def delete_post(request, post_id):
     post.delete()
     #messages.sucess(request, 'You have deleted your post")
 
-    return redirect(reverse('home'))
+    return redirect(reverse('activity'))
 
 
 """
@@ -208,7 +208,7 @@ def search_posts(request):
 
         if not posts:
             # messages.info(request, "Sorry we couldn't find a post that matched your search.")
-            return redirect(reverse('home'))
+            return redirect(reverse('activity'))
 
     context = {
         'post_search': posts,
