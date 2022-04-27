@@ -18,7 +18,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'home' %}"><span><i class="fas fa-camera-retro"></i></span> We Went</a>
+          <div class="navbar-brand"><span><i class="fas fa-camera-retro"></i></span> We Went</div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -28,7 +28,7 @@
                 <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Activity</a>
+                <a class="nav-link" href="{% url 'activity' %}">Activity</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -66,11 +66,15 @@
       {% endblock content %}
     </main>
 
+
+    <section>
+      <div> </div>
+    </section>
     <footer class="bg-light text-center text-lg-start">
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         © 2020 Copyright:
-        <a class="text-dark text-decoration-none">We Went</a>
+        <a class="text-dark text-decoration-none font-weight-bold" href="{% url 'about' %}">we went</a>
     </div>
     </footer>
     
