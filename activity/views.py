@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
+from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.http import HttpResponseRedirect
@@ -190,3 +191,28 @@ def delete_post(request, post_id):
     return redirect(reverse('home'))
 
 
+"""
+View to search post in the database
+"""
+
+def search_posts(request):
+    posts = Post.objects.all()
+
+
+    if request.method == "POST":
+        search = request.POST.get('search-input')
+        queries = Q(title__icontains=search) | Q(
+            description__icontains=search) | Q(
+            location__icontains=search)
+        posts = posts.filter(queries)
+
+        if not posts:
+            # messages.info(request, "Sorry we couldn't find a post that matched your search.")
+            return redirect(reverse('home'))
+
+    context = {
+        'post_search': posts,
+        'search': search,
+    }
+
+    return render(request, 'searched_posts.html', context)
