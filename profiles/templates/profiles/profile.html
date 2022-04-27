@@ -10,10 +10,10 @@
         <div class="col-md-4 col-12">
             <div class="profile-nav">
                 <ul class="list-group">
-                    <a class="m-1" href='#' aria-label="profile nav My account button">
+                    <a class="m-1" href='#' aria-label="profile nav my posts button">
                         <li class="list-group-item active" id="post-nav-button"><i class="fas fa-fw fa-user pr-1"></i>My Posts</li>
                     </a>
-                    <a class="m-1" href='#' aria-label="profile nav my orders button">
+                    <a class="m-1" href='#' aria-label="profile nav my liked posts button">
                         <li class="list-group-item" id="likes-nav-button"><i class="fas fa-fw fa-heart pr-1"></i>My Likes</li>
                     </a>  
                     <a class="m-1" href='#' aria-label="profile nav logout button">
@@ -22,7 +22,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col" id="post-panel">
+        <div class="col-md-8 col-12" id="post-panel">
             {% if posts %}
         {% for post in posts %}
             <div class="col-12">
@@ -45,7 +45,7 @@
         {% endif%}
         </div>
 
-        <div class="col" id="likes-panel">LIKES
+        <div class="col-md-8 col-12" id="likes-panel">LIKES
             {% if likes %}
             {% for like in likes %}
             <div class="col-12">
@@ -69,12 +69,12 @@
     </div>
         
 <!-- Logout Panel -->
-<div class="col-md-8 col-12 checkout_row" id="logout-panel">
-    <div class="profile-dashboard text-center">
-        <h2 class="text-black text-center text-heading-size">Log out?</h2>
-        <p class="text-black text-center">Are you sure you wish to log out?</p>
-        <a href="#" aria-label="Log out" class="btn orange-btn text-center text-white rounded mb-2">Log Out</a>
-        <a href="#" aria-label="Continue Shopping" class="btn orange-btn text-center text-white rounded mb-2">Continue Shopping</a>
+<div class="col-md-8 col-12" id="logout-panel">
+    <div class="text-center">
+        <h2 class="text-center">Log out?</h2>
+        <p class="text-center">Are you sure you wish to log out?</p>
+        <a href="{% url 'account_logout' %}" aria-label="Log out" class="btn btn-warning text-center rounded mb-2">Log Out</a>
+        <a href="{% url 'home' %}" aria-label="Return to activity page" class="btn btn-success text-center rounded mb-2">Activity Page</a>
     </div>
 </div>
     </section>
