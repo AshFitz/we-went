@@ -51,6 +51,11 @@
                 {% endif %}
               </ul>
               </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'add_post' %}"><i class="fas fa-plus"></i></a>
+              </li>
+              {% endif %}
             </ul>
             <form class="d-flex" method="POST" action="{% url 'searched_posts' %}">
                 {% csrf_token %}
