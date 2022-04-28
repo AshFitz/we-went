@@ -6,8 +6,13 @@
 <div class="container post-container">
     <div class="row post-text">
         <div class="col-12">
-          <form action= ""> 
+          <form action= "{% url 'edit_post' post.id %}" method="POST" enctype="mutlipart/form-data"> 
+            {% csrf_token %}
             {{ form | crispy }}
+            <div class="text-right">
+              <a href="{% url 'activity' %}" class="btn btn-warning" aria-label="return to activity page"></i> Back To Activity</a>
+              <button class="btn btn-success" aria-label="update post button"><i class="fas fa-plus-circle"></i> Update Post</button>
+          </div>
           </form>
         </div>
     </div>
