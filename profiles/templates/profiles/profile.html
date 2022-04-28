@@ -25,6 +25,7 @@
         <div class="col-md-8 col-12" id="post-panel">
             {% if posts %}
         {% for post in posts %}
+        <a href="{% url 'post_detail' post.id %}">
             <div class="col-12">
                 <h2>Title: {{ post.title }}</h2>
             </div>
@@ -41,7 +42,18 @@
                 <img src="{{ post.featured_image.url}}">
             </div>
             <span id="{{post.id}}_like_count">Number of likes:{{ post.like_count }}</span>
+        </a>
         {% endfor %}
+        {% endif%}
+
+        {%if comments %}
+        {% for comment in comments %}
+        {% if comment.user == request.user %}
+        {{comment.body}} :comment
+        <button class="btn btn-warning"><a href="{% url 'delete_comment' comment.id %}">Delete</a></button>
+        {% endif %}
+        
+        {% endfor%}
         {% endif%}
         </div>
 
