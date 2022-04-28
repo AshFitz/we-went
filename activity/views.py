@@ -35,24 +35,24 @@ class Comment(View):
                 "post": post,
                 "comments": comments,
                 "comment_form": CommentForm(),
-                
+     
             }
         )
 
     """
     Function to to add a comment to a specific post
     """
-    @login_required
     def post(self, request, post_id, *args, **kwargs):
         queryset = Post
         post = get_object_or_404(queryset, pk=post_id)
         comments = post.comments.order_by("created_on")
-
+        user = get_object_or_404(UserProfile, user=request.user)
         comment_form = CommentForm(data=request.POST)
 
         if comment_form.is_valid():
-            comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
+            comment_form.instance.name = request.user.username
+            comment.user = request.user
             comment.post = post
             comment.save()
             return HttpResponseRedirect("/")
@@ -219,3 +219,10 @@ def search_posts(request):
     }
 
     return render(request, 'searched_posts.html', context)
+
+
+"""
+View to click into individual post
+"""
+def post_detail(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
