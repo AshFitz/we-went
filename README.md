@@ -46,9 +46,50 @@
     * I can search posts so that I can view the post I am looking for and similar posts.
     
 
-* As a site owner:
+* As a Site Owner:
     * I want the user to view the landing page so they can immediately understand the sites use and purpose.
     * I want to provide easy navigation to different areas of the site to enhance the user experience.
     * I want to provide the user with a posts page so the user can view all user post and likes.
     * I want to offer users the option to click into each individual post so they have more information and can view the comments.
     * I want to provide a search bar so that the user can search a post or similar post by keywords.
+
+### EPIC|Sign Up
+
+* As a Site User:
+    * I can register for an account so that I can interact further with the site an users.
+    * I can login and logout of my account so that I can post, comment and like other posts.
+    * I can see my login status so that I know if I need to log in to interact further.
+
+* As a Site Owner:
+    * I want the user to have an option to create an account if they would like to interact with the site and users further.
+    * I want the user to be able to login and logout, to give them access to post, comment and like other posts.
+    * I want the users login status to be visible so they are aware if they need to log in or not.
+
+### EPIC|User Social
+
+* As a Site User:
+    * I can log in so that I have access to add a post, like and comment.
+    * I can view my own post's so that I can see what I have previously posted, the comments and the likes.
+    * I can add a post so that I can interact with other users.
+    * I can edit my posts so that I can make any desired changes.
+    * I can delete my posts so that I can remove posts I no longer want to be displayed.
+    * I can view the posts I have liked so that I can return to these posts easily.
+    * I can like and unlike posts so that I can share my appreciation.
+    * I can comment on posts so that I can show my thoughts of the post and interact with the post owner and other users.
+
+* As a Site Owner:
+    * I want the user to have the option to login so that they can add a post, comment and like.
+    * I want the user to be able to view their own posts so they can see what they have already posted, the comments and the likes.
+    * I want a user to have the ability to add a post so that they can interact and share their activities.
+    * I want a user to have access to edit their post so that they can update it and make changes.
+    * I want a user to have the ability to delete their post so they can remove posts they no longer want displayed.
+    * I want a user to have access to the posts they have liked so they can easily return to their favourite posts.
+    * I want a user to be able to like and unlike a post so that they can share their appreciation.
+    * I want the user to be able to leave a comment so that they can interact with the post owner and user users and also leave their thoughts.
+
+### EPIC|Admin
+
+* As an Admin:
+    * I can create, read, update and deletle posts so that I can manage the content.
+    * I can remove posts so that I can filter out any inappropriate posts.
+    * I can remove comments so that I can filter out any inappropriate comments.
