@@ -9,7 +9,7 @@
 <p> Many people scroll social media platforms wanting the life others have. The goal of this project is to create a positive environment that inspires others to appreciate and discover what Ireland has to offer. Since the pandemic people have changed their way of living and have become more adventurous which has led to the discovery of hidden gems throughout the country. This site allows user to share and seek these amazing experiences. While also promoting and profiting, small and family owned businesses in the hopes they thrive. The target audience are people who relate and are interested in this content. People who would like to get involved by sharing and unfolding new experiences. 
 </p>
 
-## Target Audience Goals:
+### Target Audience Goals:
 * A site that is easy to navigate on mobile, tablet and desktop.
 * A site that is appealing, intriguing and unique.
 * A site that clearly displays it's purpose and objective.
@@ -21,5 +21,17 @@
 * A site that allows you to submit, edit and delete a comment.
 * A site that allows you to see your posts.
 * A site that allows you to see your liked posts.
+
+### Site Owner Goals:
+* A site that is user friendly and easy to navigate.
+* A site that easily provides a user with our purpose and objective.
+* A site that encourages users to sign up and create an account.
+* A site that increases user interavtivity.
+* A site that users can post, like and comment.
+* A site that users can refer back to their posts and their like posts.
+* A site the creates a positive environment for uses to share their activities and adventures.
+* A site that creates frequent and loyal users.
+* A site that encourages users to try new and exciting activities to enhance their free time.
+
 
 
