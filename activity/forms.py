@@ -14,3 +14,14 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ['title', 'location', 'rating', 'description', 
                  'featured_image']
+
+        widgets = {
+            'rating': forms.NumberInput(
+                attrs={
+                    "type": 'number',
+                    "value": 1,
+                    "min": 1,
+                    "max": 5,
+                }
+            )
+        }
