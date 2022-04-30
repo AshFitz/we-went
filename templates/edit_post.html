@@ -6,7 +6,7 @@
 <div class="container post-container">
     <div class="row post-text">
         <div class="col-12">
-          <form action= "{% url 'edit_post' post.id %}" method="POST" enctype="mutlipart/form-data"> 
+          <form action= "{% url 'edit_post' post.id %}" method="POST" enctype="multipart/form-data"> 
             {% csrf_token %}
             {{ form | crispy }}
             <div class="text-right">
