@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.shortcuts import render, get_object_or_404, get_list_or_404, reverse, redirect
 from django.views import generic, View
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
@@ -76,9 +76,9 @@ View to edit a comment on a post
 """
 @login_required
 def edit_comment(request, post_id):
-    post = get_object_or_404(Post, pk=post_id)
+    post = get_list_or_404(Post, pk=post_id)
 
-    user = get_object_or_404(Comment, user=request.user, post=post_id)
+    user = get_list_or_404(Comment, user=request.user, post=post_id)
     if request.method == "POST":
         comment_form = CommentForm(request.POST, instance=user)
         if comment_form.is_valid():
