@@ -75,26 +75,25 @@ class CommentList(View):
 View to edit a comment on a post
 """
 @login_required
-def edit_comment(request, post_id):
-    post = get_list_or_404(Post, pk=post_id)
-
-    user = get_list_or_404(Comment, user=request.user, post=post_id)
+def edit_comment(request, comment_id):
+    
+    user = get_object_or_404(Comment, pk=comment_id)
     if request.method == "POST":
-        comment_form = CommentForm(request.POST, instance=user)
-        if comment_form.is_valid():
-            comment_form.save()
+        form = CommentForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
             # messages.success(request,')
-            return redirect(reverse('post_detail', args=[post_id, ]))
+            return redirect(reverse('activity'))
         else:
             print("help")
             # messages.error(request, f'Sorry please try again.')
     else:
-        comment_form = CommentForm(instance=user)
+        form = CommentForm(instance=user)
 
     template = 'edit_comment.html'
     context = {
-        'post': post,
-        'comment_form': comment_form,
+        'user': user,
+        'form': form,
     }
     return render(request, template, context)
 
@@ -234,4 +233,3 @@ def post_detail(request, post_id):
         'comments' : comments
     }
     return render(request, 'post_detail.html', context)
-        
