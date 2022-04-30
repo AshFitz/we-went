@@ -7,6 +7,41 @@ h2 {
     text-decoration: none;
 }
 
+/*---- Uppernav styling --*/
+
+button {
+    border: none;
+}
+
+.navbar {
+    background: #e6e5de;
+}
+
+/*---- Footer styling --*/
+footer {
+    display: flex!important;
+    justify-content: space-around;
+    flex-basis: auto;
+    background-color: #e6e5de!important;
+}
+
+.navbar-nav {
+    flex-direction: row!important;
+    background-color: inherit!important;
+}
+
+li {
+    margin-right: 20px;
+}
+
+.sticky-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/*---- Activity styling --*/
+
 .post-description * {
     line-height: inherit!important;
     font-size: inherit!important;
@@ -15,25 +50,57 @@ h2 {
  }
 
 .image-container { 
-    display: flex;
-    flex-direction: column;
     text-align: center;
+    
 }
+
+img {
+    /* width: 500px;
+    height: 500px; */
+    object-fit: cover;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+
+}
+
 
 .post-container {
     border: 2px solid #084935;
-    border-top: 0;
-    border-bottom: 0;
     background-color: #fefbf1;
+    border-radius: 5px;
+    margin: 15px 0;
+    padding-top: 40px;
+    max-width: 800px;
+}
+
+.like-container {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 12px;
 }
 
 .main-bg {
     background-color: #e6e5de;
+    text-align: -webkit-center;
 }
 
 .post-text {
     color: #000;
 }
+
+.title-text{
+    font-size: 1.3rem;
+}
+
+.rotate-title {
+    white-space: nowrap;
+    transform: rotate(-90deg);
+    display: flex;
+    justify-content: space-between;
+}
+
 
 /*---- Profile styling --*/
 
@@ -42,7 +109,7 @@ h2 {
     top: 3rem;
 }
 
-/*---- To style later --*/
+
 .profile-container {
 
 }
@@ -58,3 +125,4 @@ h2 {
 #logout-panel {
     display: none;
 }
+
