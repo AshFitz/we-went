@@ -10,7 +10,6 @@ class Post(models.Model):
     location = models.CharField(max_length=220)
     rating = models.DecimalField(
         max_digits=6, decimal_places=2)
-    #slug = models.SlugField(max_length=220, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="activity_post")
     updated_on = models.DateTimeField(auto_now=True)
     description = models.TextField()
