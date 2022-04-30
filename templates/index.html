@@ -65,6 +65,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col">
+                                    {% if user.is_authenticated %}
                                     <a href="{% url 'comment' post.id %}">
                                         <i class="fas fa-comment">Comment</i>
                                     </a>
@@ -72,7 +73,30 @@
                                     <a href="{% url 'edit_post' post.id %}">
                                         <i class="fas fa-box">Edit</i>
                                     </a>
+                                    {% endif %}
+                                    <p>{{ user.profile }} : userprofile </p>
+                                    <p>{{ pos }} : posts </p>
 
+                                    {% comment %} {% for post in posts %}
+                                    {{ post }}<p>hello</p>
+                                    {% endfor %}
+
+
+                                    <p>{{profile.user_posts}}</p>
+                                    {% for comment in post.comments.all %} 
+                                    
+                                    {% for comment.name in post.comments.all %}
+                                    <h2>{{ comment.name }}</h2>
+                                    {% if user.profile in comment.name %}
+                                    {% if user.profile in comment %}
+                                    <a href="{% url 'edit_comment' post.id %}">
+                                        <i class="fas fa-box">Edit Comment</i>
+                                    </a>
+                                    {% endif %} 
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endfor %}
+                                     {% endcomment %}
                                     <a class="btn btn-danger" aria-label="delete button" id="delete-button" href="{% url 'delete_post' post.id %}">Delete</a>
                                 </div>
                             </div>
