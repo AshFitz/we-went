@@ -43,6 +43,9 @@
             </div>
             <span id="{{post.id}}_like_count">Number of likes:{{ post.like_count }}</span>
         </a>
+        <a href="{% url 'edit_post' post.id %}">
+            <i class="fas fa-box">Edit</i>
+        </a>
         {% endfor %}
         {% endif%}
 
