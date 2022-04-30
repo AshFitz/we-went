@@ -9,31 +9,34 @@
             {% for post in post_list %}
             <div class="container post-container">
                 <div class="row post-text">
-                    <div class="col-12">
-                        <h1>{{ post.author }}</h1>
+                    <div class="col-3 my-auto">
+                        <div class="row"> 
+                            <div class="col-12 rotate-title">
+                                <h2 class="title-text">{{ post.title }}</h2>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12">
+                    {% comment %} <div class="col-12">
                         <h2>Title: {{ post.title }}</h2>
-                    </div>
-                    <div class="col-12">
+                    </div> {% endcomment %}
+                    {% comment %} <div class="col-12">
                         <h2 class="post-description">Description: {{ post.description | safe }}</h2>
                     </div>
                     <div class="col-12">
                         <h2>Location: {{ post.location }}</h2>
-                    </div>
-                    <div class="col-6">
+                    </div> {% endcomment %}
+                    {% comment %} <div class="col-6">
                         <h2 class="">{{ post.rating }}</h2>
-                    </div>
-                    <div class="col-12 image-container">
+                    </div> {% endcomment %}
+                    <div class="col-9 image-container">
                         <img src="{{ post.featured_image.url}}">
                     </div>
-                    <div class="col-6">
+                    <div class="col-12 like-container">
                         <p>
                             {% if user.is_authenticated %}
 
-                           
                             {% if request.user.id in post.liked_by_user %}
-                            {% comment %} {% if user in post.likes %} {% endcomment %}
+                        
                             <form class="d-none" method="POST">
                             {% csrf_token %}
                             </form>
@@ -55,7 +58,7 @@
                         </p>
                         
                     </div>
-                    <div class="col-12">
+                    {% comment %} <div class="col-12">
                         {% for comment in post.comments.all %}
                         {{ comment.name }}
                         {{ comment.body }}
@@ -77,31 +80,11 @@
                                     <p>{{ user.profile }} : userprofile </p>
                                     <p>{{ pos }} : posts </p>
 
-                                    {% comment %} {% for post in posts %}
-                                    {{ post }}<p>hello</p>
-                                    {% endfor %}
-
-
-                                    <p>{{profile.user_posts}}</p>
-                                    {% for comment in post.comments.all %} 
-                                    
-                                    {% for comment.name in post.comments.all %}
-                                    <h2>{{ comment.name }}</h2>
-                                    {% if user.profile in comment.name %}
-                                    {% if user.profile in comment %}
-                                    <a href="{% url 'edit_comment' post.id %}">
-                                        <i class="fas fa-box">Edit Comment</i>
-                                    </a>
-                                    {% endif %} 
-                                    {% endif %}
-                                    {% endfor %}
-                                    {% endfor %}
-                                     {% endcomment %}
                                     <a class="btn btn-danger" aria-label="delete button" id="delete-button" href="{% url 'delete_post' post.id %}">Delete</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> {% endcomment %}
                 </div>
             </div>
             {% endfor %}
