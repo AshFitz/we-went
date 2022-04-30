@@ -9,14 +9,15 @@ from activity.models import Post, Comment
 
 def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
-
+    profile_id = request.user.id
+    print(profile_id)
     posts = profile.user_posts.all()
     likes = Post.objects.filter(likes=request.user.id)
-    # comments = Comment.objects.filter()
+    comments = Comment.objects.order_by('created_on')
     template = 'profiles/profile.html'
     context = {
         'profile': profile,
-        # 'comments': comments,
+        'comments': comments,
         'likes': likes,
         'posts': posts
     }
