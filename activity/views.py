@@ -78,18 +78,21 @@ View to edit a comment on a post
 def edit_comment(request, comment_id):
     
     user = get_object_or_404(Comment, pk=comment_id)
-    if request.method == "POST":
-        form = CommentForm(request.POST, instance=user)
-        if form.is_valid():
-            form.save()
-            # messages.success(request,')
-            return redirect(reverse('activity'))
+    if request.user == user.user:
+        if request.method == "POST":
+            form = CommentForm(request.POST, instance=user)
+            if form.is_valid():
+                form.save()
+                # messages.success(request,')
+                return redirect(reverse('activity'))
+            else:
+                print("help")
+                # messages.error(request, f'Sorry please try again.')
         else:
-            print("help")
-            # messages.error(request, f'Sorry please try again.')
+            form = CommentForm(instance=user)
     else:
-        form = CommentForm(instance=user)
-
+        #message.info(request, 'Oops this page is not for you')
+        return redirect(reverse('activity'))
     template = 'edit_comment.html'
     context = {
         'user': user,
@@ -160,24 +163,28 @@ View to edit a post and update the databsae
 @login_required
 def edit_post(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES, instance=post)
-        if form.is_valid():
-            form.save()
-            return redirect(reverse('edit_post', args=[post.id]))
+    if request.user == post.author:
+        if request.method == 'POST':
+            form = PostForm(request.POST, request.FILES, instance=post)
+            if form.is_valid():
+                form.save()
+                return redirect(reverse('edit_post', args=[post.id]))
+            else:
+                print("do this")
+                #messages.error(request, "Failed to edit post. Please try again")
+
         else:
-            print("do this")
-            #messages.error(request, "Failed to edit post. Please try again")
+            form = PostForm(instance=post)
+            #messages.info(request, f'You are editing {post.tilte}')
+    else: 
+        return redirect(reverse('activity'))
+        form = None
+        print('add a toast here')
 
-    else:
-        form = PostForm(instance=post)
-        #messages.info(request, f'You are editing {post.tilte}')
-
-    # post_title = 'Edit a post'
     template = 'edit_post.html'
     context = {
-        'form':form,
-        'post':post,
+        'form': form,
+        'post': post,
     }
 
     return render(request, template, context)
