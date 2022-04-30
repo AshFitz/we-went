@@ -6,7 +6,7 @@ from profiles.models import UserProfile
 
 class Post(models.Model):
     user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True, related_name='user_posts')
-    title = models.CharField(max_length=220, unique=True)
+    title = models.CharField(max_length=220, unique=False)
     location = models.CharField(max_length=220)
     rating = models.DecimalField(
         max_digits=6, decimal_places=2)
