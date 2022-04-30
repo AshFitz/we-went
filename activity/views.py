@@ -21,7 +21,7 @@ class PostList(generic.ListView):
     #     return context
 
 
-class Comment(View):
+class CommentList(View):
     """
     Function to retreive the comment from Db
     """
@@ -77,31 +77,33 @@ View to edit a comment on a post
 @login_required
 def edit_comment(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
+
     user = get_object_or_404(Comment, user=request.user, post=post_id)
-    if request.method == 'POST':
+    if request.method == "POST":
         comment_form = CommentForm(request.POST, instance=user)
         if comment_form.is_valid():
             comment_form.save()
-            # messages.success(request, f'You have updated your comment on {post.title}.')
-            return redirect(reverse('edit_comment', args=[post_id]))
-        # else:
-            # messages.error(request, f'Sorry we are unable to update your comment on {post.title}, please try again.')
+            # messages.success(request,')
+            return redirect(reverse('post_detail', args=[post_id, ]))
+        else:
+            print("help")
+            # messages.error(request, f'Sorry please try again.')
     else:
         comment_form = CommentForm(instance=user)
 
-    template = 'edit_post.html'
+    template = 'edit_comment.html'
     context = {
         'post': post,
-        'user': user,
         'comment_form': comment_form,
     }
     return render(request, template, context)
 
 
-def delete_comment(request, post_id):
-    comment = get_object_or_404(Comment, user=request.user, post=post_id)
-    comment.delete()
-    #message.success(request, 'Your comment has been deleted.')
+
+def delete_comment(request, comment_id):
+    users_comment = get_object_or_404(Comment, pk=comment_id)
+    users_comment.delete()
+
     return redirect(reverse('activity'))
 
 """
@@ -172,7 +174,7 @@ def edit_post(request, post_id):
         form = PostForm(instance=post)
         #messages.info(request, f'You are editing {post.tilte}')
 
-    post_title = 'Edit a post'
+    # post_title = 'Edit a post'
     template = 'edit_post.html'
     context = {
         'form':form,
@@ -192,7 +194,6 @@ def delete_post(request, post_id):
     #messages.sucess(request, 'You have deleted your post")
 
     return redirect(reverse('activity'))
-
 
 """
 View to search post in the database
@@ -226,3 +227,11 @@ View to click into individual post
 """
 def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
+    comments = post.comments.order_by("created_on")
+    # comments = Comment.objects.filter(post=post_id)
+    context= {
+        'post' : post,
+        'comments' : comments
+    }
+    return render(request, 'post_detail.html', context)
+        
