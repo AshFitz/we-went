@@ -72,6 +72,13 @@ li {
     background-color: inherit;
 }
 
+.search-bar-input {
+    background-color: inherit;
+}
+
+#search-addon, button, i {
+    background-color: #e6e5de;
+}
 .post-container {
     background-color: #fefbf1;
     border-radius: 5px;
@@ -80,6 +87,10 @@ li {
     margin-bottom: 50px;
     max-width: 800px;
     filter: drop-shadow(-24px -24px 0px #1E2D2F);
+}
+
+.fa-heart{
+    background-color: #fefbf1;
 }
 
 .like-container {
