@@ -29,34 +29,24 @@
                         <h2 class="">{{ post.rating }}</h2>
                     </div> {% endcomment %}
                     <div class="col-9 image-container">
-                        <img src="{{ post.featured_image.url}}">
+                        <img class="post-image" src="{{ post.featured_image.url}}">
                     </div>
                     <div class="col-12 like-container">
-                        <p>
                             {% if user.is_authenticated %}
+                                {% if request.user.id in post.liked_by_user %}
+                                    <form class="d-none" method="POST">
+                                        {% csrf_token %}
+                                    </form>
+                                    <button type="submit" name="post_id" value="{{post.id}}" class="like-button" data-url={% url 'like'%}><i class="fas fa-heart">
+                                    </i></button>
+                                {% else %}
 
-                            {% if request.user.id in post.liked_by_user %}
-                        
-                            <form class="d-none" method="POST">
-                            {% csrf_token %}
-                            </form>
-                            <button type="submit" name="post_id" value="{{post.id}}" class="like-button" data-url={% url 'like'%}><i class="fas fa-heart">
-                            </i></button>
+                                <button type="submit" name="post_id" value="{{post.id}}" class="like-button" data-url={% url 'like'%}><i class="fas fa-heart">
+                                </i></button>
 
-                            {% else %}
-
-                            <button type="submit" name="post_id" value="{{post.id}}" class="like-button" data-url={% url 'like'%}><i class="far fa-heart">
-                            </i></button>
-
+                                {% endif %}
                             {% endif %}
-
-
-                        
-                            {% endif %}
-                            
-                            <span id="{{post.id}}_like_count">{{ post.like_count }}</span>
-                        </p>
-                        
+                        <span id="{{post.id}}_like_count">{{ post.like_count }}</span>
                     </div>
                     {% comment %} <div class="col-12">
                         {% for comment in post.comments.all %}
