@@ -16,57 +16,18 @@
 
     <!-- Navigation -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
           <div class="navbar-brand"><span><i class="fas fa-camera-retro"></i></span> We Went</div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'activity' %}">Activity</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    {% if user.is_authenticated %}
-                    <i class="fas fa-user"></i>
-                    {% else %}
-                    <i class="far fa-user"></i>
-                    {% endif %}
-
-                </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{% url 'add_post' %}">Add Post</a></li>
-                <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
-                <li><hr class="dropdown-divider"></li>
-                {% if user.is_authenticated %}
-                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
-                {% else %}
-                <li><a class="dropdown-item" href="{% url 'account_login' %}">Log In</a></li>
-                <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a></li>
-                {% endif %}
-              </ul>
-              </li>
-              {% if user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'add_post' %}"><i class="fas fa-plus"></i></a>
-              </li>
-              {% endif %}
-            </ul>
             <form class="d-flex" method="POST" action="{% url 'searched_posts' %}">
                 {% csrf_token %}
                 <div class="input-group rounded">
                     <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="search-input" />
                     <span class="input-group-text border-0" id="search-addon">
-                      <i class="fas fa-search"></i>
+                      <Button><i class="fas fa-search"></i></button>
                     </span>
                   </div>
             </form>
-          </div>
         </div>
       </nav>
 
@@ -77,14 +38,29 @@
     </main>
 
 
-    <section>
-      <div> </div>
-    </section>
-    <footer class="bg-light text-center text-lg-start">
+    <footer class="text-center text-lg-start sticky-bottom-nav justify-content-center">
     <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2020 Copyright:
-        <a class="text-dark text-decoration-none font-weight-bold" href="{% url 'about' %}">we went</a>
+    <div class="navbar navbar-nav navbar-light">
+      <div class="container-fluid">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'about' %}"><i class="fas fa-home"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'activity' %}"><i class="far fa-image"></i></a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}"><i class="fas fa-user"></i></a></li>  
+            {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}"><i class="far fa-user"></i></a></li>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'add_post' %}"><i class="fas fa-plus"></i></a>
+            </li>
+            {% endif %}
+          </ul>
+      </div>
     </div>
     </footer>
     
