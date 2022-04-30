@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="col-md-8 col-12" id="post-panel">
+
+<a href="{% url 'post_detail' post.id %}">
+    <div class="col-12">
+        <h2>Title: {{ post.title }}</h2>
+    </div>
+    <div class="col-12">
+        <h2 class="post-description">Description: {{ post.description | safe }}</h2>
+    </div>
+    <div class="col-12">
+        <h2>Location: {{ post.location }}</h2>
+    </div>
+    <div class="col-6">
+        <h2 class="">{{ post.rating }}</h2>
+    </div>
+    <div class="col-12 image-container">
+        <img src="{{ post.featured_image.url}}">
+    </div>
+    <span id="{{post.id}}_like_count">Number of likes:{{ post.like_count }}</span>
+</a>
+
+{%if comments %}
+{% for comment in comments %}
+
+{{comment.body}} :comment
+{{comment.id}} id
+<a class="btn tbn-success" href="{% url 'edit_comment' comment.id %}" aria-label="edit button">Edit</a>
+<button class="btn btn-warning"><a href="{% url 'delete_comment' post.id %}">Delete</a></button>
+
+{% endfor%}
+{% endif%}
+</div>
+
+<div class="col-md-8 col-12" id="likes-panel">LIKES
+    {% if likes %}
+    {% for like in likes %}
+    <div class="col-12">
+        <h2>Title: {{ like.title }}</h2>
+    </div>
+    <div class="col-12">
+        <h2 class="post-description">Description: {{ like.description | safe }}</h2>
+    </div>
+    <div class="col-12">
+        <h2>Location: {{ like.location }}</h2>
+    </div>
+    <div class="col-6">
+        <h2 class="">{{ like.rating }}</h2>
+    </div>
+    <div class="col-12 image-container">
+        <img src="{{ like.featured_image.url}}">
+    </div>
+   
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock  %}
