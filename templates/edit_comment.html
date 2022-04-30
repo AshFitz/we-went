@@ -6,7 +6,7 @@
 <div class="container post-container">
     <div class="row post-text">
         <div class="col-12">
-          <form action= "{% url 'edit_comment' post.id %}" method="POST" class="text-center"> 
+          <form action= "#" method="POST" class="text-center"> 
             <div class="col-12">
               {% csrf_token %}
               {{ form | crispy }}
