@@ -287,8 +287,6 @@ a .likes-hover:hover{
    text: #1e2d2f;
 }
 
-
-
 #post-panel {
     margin-top:20px
 }
@@ -303,3 +301,29 @@ a .likes-hover:hover{
     margin-top:20px
 }
 
+/*-- About pagbe styling --*/
+
+.hero-text{     
+    margin-top:50px;
+    margin-bottom:50px;
+    font-size: 3rem;
+    color: #1E2D2F;
+}
+
+.about-main-container {
+    background-color: #e6e5de;
+}
+
+.text-orange{ 
+    color: #C57B57;
+}
+
+.about-line {
+    background-image: linear-gradient(to right, rgb(230 229 222), rgb(30 45 47), rgb(230 229 222));
+    margin-bottom: 25px;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
