@@ -106,3 +106,14 @@
 ### Icons:
 <p> I have used multiple icons from font-awsome. They offer a wide range of icons and will help the usser to identify the buttons use. For example, icons were used for edit and deleting comments.
 </p>
+
+### Colours:
+<p> I chose the colours below because they suit the theme of the site, adventure and activity. They provides a earthy feel to the site while keeping the it minimalistic. They compliment themselves, the content and the images well. They will help to compliment the users posts also. The content is clearly readable and the site navigates well due to the colours. It increases the appeal of the wesbsite and UX. The colours used across the site are listed below.
+</p>
+
+* Primary Colour - #E6E5DE - This is an off white colour with a grey understone. This colour was used for the nav bar, footer, home background, acitivty background and the logo.
+* Secondary Colour - #041F1E - This is an emerald green colour. This was used for most of the text, icons, logo and the profile background colour.
+* Tertiary Colour - C57B57 - This is a pale orange colour. Which was used for the like, edit and delte post icons, on hover icons, some of the home page text and the post buttons.
+* Quaternary - #FEFBF1 - This is another off white colour. This was used for the post card on the activity page adn post detail page. It was also used for the profile nav and other text. 
+
+![alt text](https://github.com/AshFitz/we-went/blob/main/static/images/we-went-coolors.png)
