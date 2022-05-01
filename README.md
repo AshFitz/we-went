@@ -103,3 +103,6 @@
 <p>I chose this font family for the webste as it compliments the color scheme, theme and the content well. It is easily readable and adds to the clean and elegant style.
 </p>
 
+### Icons:
+<p> I have used multiple icons from font-awsome. They offer a wide range of icons and will help the usser to identify the buttons use. For example, icons were used for edit and deleting comments.
+</p>
