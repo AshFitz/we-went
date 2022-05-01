@@ -4,58 +4,50 @@
 <div class="h1">Welcome back, {{profile.user}}</div>
 
 
-<div class="container profile-container">
+<div class="container-fluid profile-container">
+    <div class="container profile-inner-container">
     <section class="row mb-5">
         <!--Nav for profile-->
         <div class="col-md-4 col-12">
             <div class="profile-nav">
-                <ul class="list-group">
+                <ul class="list-group profile-nav-list">
                     <a class="m-1" href='#' aria-label="profile nav my posts button">
-                        <li class="list-group-item active" id="post-nav-button"><i class="fas fa-fw fa-user pr-1"></i>My Posts</li>
+                        <li class="list-group-item profile-link-active active" id="post-nav-button"><i class="fas fa-fw fa-user pr-1"></i>My Posts</li>
                     </a>
                     <a class="m-1" href='#' aria-label="profile nav my liked posts button">
-                        <li class="list-group-item" id="likes-nav-button"><i class="fas fa-fw fa-heart pr-1"></i>My Likes</li>
+                        <li class="list-group-item profile-link-active " id="likes-nav-button"><i class="fas fa-fw fa-heart pr-1"></i>My Likes</li>
                     </a>  
                     <a class="m-1" href='#' aria-label="profile nav logout button">
-                        <li class="list-group-item" id="logout-nav-button"><i class="fas fa-fw fa-sign-out-alt pr-1"></i>Log Out</li>
+                        <li class="list-group-item profile-link-active " id="logout-nav-button"><i class="fas fa-fw fa-sign-out-alt pr-1"></i>Log Out</li>
                     </a>      
                 </ul>
             </div>
         </div>
         <!--posts-->
         <div class="col-md-8 col-12" id="post-panel">
-            
                 <div class="row">
                     {% if posts %}
                     {% for post in posts %} 
-                    <div class="col-6">
+                    <div class="col-sm-12 col-md-6 col-lg-4 text-center">
                         <a href="{% url 'post_detail' post.id %}">
                             <img class="profile-image-container" src="{{ post.featured_image.url}}">
                         </a>
                         <a class="edit-post-profile" href="{% url 'edit_post' post.id %}">
-                            <i class="fas fa-box">Edit</i>
+                            <i class="far fa-edit"></i>
                         </a>
+                        <a class="edit-post-profile" aria-label="delete button" id="delete-button" href="{% url 'delete_post' post.id %}"><i class="far fa-trash-alt"></i></a>
                     </div>
-                    
-                    
                     {% endfor %}
+                    {%else%}
+                    <h2>
+                    Sorry youve no posts now.
+                    </h2>
                 {% endif%}
                 </div>
         
                 
             
-            <!--Comments-->
-            {%if comments %}
-            {% for comment in comments %}
-            {% if comment.user == request.user %}
-                {{comment.body}} :comment
-                {{comment.id}} id
-                <a class="btn tbn-success" href="{% url 'edit_comment' comment.id %}" aria-label="edit button">Edit</a>
-                <button class="btn btn-warning"><a href="{% url 'delete_comment' comment.id %}">Delete</a></button>
-            {% endif %}
-        
-            {% endfor%}
-            {% endif%}
+            
         </div>
 
         <!--Likes-->
@@ -92,6 +84,7 @@
         </div>
     </div>
     </section>
+    </div>
 </div>
 
 <!--Post container-->
