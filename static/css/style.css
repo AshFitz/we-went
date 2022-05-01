@@ -9,7 +9,9 @@ h2 {
     font-size: 20px;
     text-decoration: none;
 }
-
+a {
+    text-decoration: none;
+}
 /*---- Uppernav styling --*/
 
 button {
@@ -62,8 +64,6 @@ li {
 }
 
 .post-image {
-    /* width: 500px;
-    height: 500px; */
     object-fit: cover;
     border-radius: 10px;
     width: 100%;
@@ -92,7 +92,7 @@ li {
     filter: drop-shadow(-24px -24px 0px #1E2D2F);
 }
 
-.fa-heart{
+.home-like{
     background-color: #fefbf1;
     color:#C57B57;
 }
@@ -175,10 +175,40 @@ li {
     width: min-content;
 }
 
+.profile-nav-list li:active,
+.profile-nav-list li:hover,
+.profile-nav-list li:focus,
+.profile-link-active.active  {
+    background: #C57B57;
+    color: #fefbf1!important;
+    border-color: transparent!important;
+}
+.profile-container, .profile-inner-container {
+    background: #1e2d2f ;
+    height: 100vh;
+}
 
-.profile-container {
+.edit-post-profile i{
+    background-color: inherit;
+    color: #fefbf1;
 
 }
+.edit-post-profile i:hover{
+    color: #C57B57;
+
+}
+.profile-link-active i{
+    background-color: inherit;
+    padding-right:20px
+}
+
+
+.list-group-item{ 
+   background-color: #fefbf1;
+   text: #1e2d2f;
+}
+
+
 
 #post-panel {
 
