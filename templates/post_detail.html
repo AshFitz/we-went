@@ -30,9 +30,10 @@
 
 {{comment.body}} :comment
 {{comment.id}} id
-<a class="btn tbn-success" href="{% url 'edit_comment' comment.id %}" aria-label="edit button">Edit</a>
-<button class="btn btn-warning"><a href="{% url 'delete_comment' post.id %}">Delete</a></button>
-
+{% if comment.user == request.user %}
+<a class="btn tbn-success" href="{% url 'edit_comment' comment.id %}" aria-label="edit button"><i class="fas fa-comment-dots"></i></a>
+<a href="{% url 'delete_comment' post.id %}"><i class="fas fa-trash"></i></a>
+{% endif %}
 {% endfor%}
 {% endif%}
 </div>
