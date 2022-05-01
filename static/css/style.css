@@ -1,3 +1,6 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@400;500;600&display=swap');
+
 h1 {
     font-size: 30px;
 }
@@ -55,7 +58,7 @@ li {
 }
 
 .title-logo{
-    width: 90px;
+    width: 100px;
 }
 
 .post-image {
@@ -91,6 +94,25 @@ li {
 
 .fa-heart{
     background-color: #fefbf1;
+    color:#C57B57;
+}
+
+.form-control {
+    border: 1px solid #1e2d2f;
+}
+
+.post-link {
+    text-decoration: none;
+}
+
+.nav-item a i{
+    color:#1E2D2F;
+    font-size: 25px;
+    padding: 0px 10px;
+}
+
+.nav-item a i:hover{
+    color:#C57B57;
 }
 
 .like-container {
@@ -108,15 +130,28 @@ li {
     color: #000;
 }
 
+.title-text:hover {
+    color:#C57B57;
+}
+
 .title-text{
+    font-family: 'Signika', sans-serif;
     font-size: 1.3rem;
 }
 
 .rotate-title {
     white-space: nowrap;
     transform: rotate(-90deg);
+    will-change: transform;
     display: flex;
     justify-content: space-between;
+}
+
+.line-break {
+    position: relative;
+    left: 4vw;
+    border: 1px solid #041f1e;
+    transform: rotate(90deg);
 }
 
 
@@ -125,6 +160,19 @@ li {
 .profile-nav {
     position: sticky;
     top: 3rem;
+}
+
+.profile-image-container{
+    object-fit: cover;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 200px;
+    height: 200px;
+}
+
+.edit-post-profile {
+    height: min-content;
+    width: min-content;
 }
 
 
