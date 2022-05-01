@@ -121,3 +121,9 @@
 ### Images
 <p> The images I used on the home page compliment the content and the colour. The images were in contrast with the theme of adventures and activities. They help the user to understand the goal and use of the site. The images were sourced from  <a href="https://unsplash.com/" target="_blank">Unsplash</a> and <a href="https://pexels.com/" target="_blank">Pexels</a>, which are high quality and completely free stock photos.
 </p>
+
+## Wireframes:
+<p> The wireframes were created in <a href="https://balsamiq.com/" target="_blank">balsamiq</a>. This helped me to plan the visual look of the website. I created wireframes for mobile, tablet and desktop.
+</p>
+
+<p> The wireframes for the project can be found <a href="https://github.com/AshFitz/we-went/tree/main/static/images/Wireframes" target="_blank">here.</a></p>
