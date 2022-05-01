@@ -22,46 +22,43 @@
                 </ul>
             </div>
         </div>
+        <!--posts-->
         <div class="col-md-8 col-12" id="post-panel">
-            {% if posts %}
-        {% for post in posts %}
-        <a href="{% url 'post_detail' post.id %}">
-            <div class="col-12">
-                <h2>Title: {{ post.title }}</h2>
-            </div>
-            <div class="col-12">
-                <h2 class="post-description">Description: {{ post.description | safe }}</h2>
-            </div>
-            <div class="col-12">
-                <h2>Location: {{ post.location }}</h2>
-            </div>
-            <div class="col-6">
-                <h2 class="">{{ post.rating }}</h2>
-            </div>
-            <div class="col-12 image-container">
-                <img src="{{ post.featured_image.url}}">
-            </div>
-            <span id="{{post.id}}_like_count">Number of likes:{{ post.like_count }}</span>
-        </a>
-        <a href="{% url 'edit_post' post.id %}">
-            <i class="fas fa-box">Edit</i>
-        </a>
-        {% endfor %}
-        {% endif%}
-
-        {%if comments %}
-        {% for comment in comments %}
-        {% if comment.user == request.user %}
-        {{comment.body}} :comment
-        {{comment.id}} id
-        <a class="btn tbn-success" href="{% url 'edit_comment' comment.id %}" aria-label="edit button">Edit</a>
-        <button class="btn btn-warning"><a href="{% url 'delete_comment' comment.id %}">Delete</a></button>
-        {% endif %}
+            
+                <div class="row">
+                    {% if posts %}
+                    {% for post in posts %} 
+                    <div class="col-6">
+                        <a href="{% url 'post_detail' post.id %}">
+                            <img class="profile-image-container" src="{{ post.featured_image.url}}">
+                        </a>
+                        <a class="edit-post-profile" href="{% url 'edit_post' post.id %}">
+                            <i class="fas fa-box">Edit</i>
+                        </a>
+                    </div>
+                    
+                    
+                    {% endfor %}
+                {% endif%}
+                </div>
         
-        {% endfor%}
-        {% endif%}
+                
+            
+            <!--Comments-->
+            {%if comments %}
+            {% for comment in comments %}
+            {% if comment.user == request.user %}
+                {{comment.body}} :comment
+                {{comment.id}} id
+                <a class="btn tbn-success" href="{% url 'edit_comment' comment.id %}" aria-label="edit button">Edit</a>
+                <button class="btn btn-warning"><a href="{% url 'delete_comment' comment.id %}">Delete</a></button>
+            {% endif %}
+        
+            {% endfor%}
+            {% endif%}
         </div>
 
+        <!--Likes-->
         <div class="col-md-8 col-12" id="likes-panel">LIKES
             {% if likes %}
             {% for like in likes %}
@@ -83,17 +80,17 @@
            
             {% endfor %}
             {% endif %}
-    </div>
+        </div>
         
-<!-- Logout Panel -->
-<div class="col-md-8 col-12" id="logout-panel">
-    <div class="text-center">
-        <h2 class="text-center">Log out?</h2>
-        <p class="text-center">Are you sure you wish to log out?</p>
-        <a href="{% url 'account_logout' %}" aria-label="Log out" class="btn btn-warning text-center rounded mb-2">Log Out</a>
-        <a href="{% url 'activity' %}" aria-label="Return to activity page" class="btn btn-success text-center rounded mb-2">Activity Page</a>
+    <!-- Logout Panel -->
+    <div class="col-md-8 col-12" id="logout-panel">
+        <div class="text-center">
+            <h2 class="text-center">Log out?</h2>
+            <p class="text-center">Are you sure you wish to log out?</p>
+            <a href="{% url 'account_logout' %}" aria-label="Log out" class="btn btn-warning text-center rounded mb-2">Log Out</a>
+            <a href="{% url 'activity' %}" aria-label="Return to activity page" class="btn btn-success text-center rounded mb-2">Activity Page</a>
+        </div>
     </div>
-</div>
     </section>
 </div>
 
