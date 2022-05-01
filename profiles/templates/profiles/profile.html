@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="h1">Welcome back, {{profile.user}}</div>
-
 
 <div class="container-fluid profile-container">
     <div class="container profile-inner-container">
+        <div class="h1 text-center profile-welcome-text">Welcome back {{profile.user}}</div>
+        <hr class="profile-line">
     <section class="row mb-5">
         <!--Nav for profile-->
         <div class="col-md-4 col-12">
@@ -32,10 +32,14 @@
                         <a href="{% url 'post_detail' post.id %}">
                             <img class="profile-image-container" src="{{ post.featured_image.url}}">
                         </a>
+                        <div class="profile-post-button-container">
+
+                        
                         <a class="edit-post-profile" href="{% url 'edit_post' post.id %}">
                             <i class="far fa-edit"></i>
                         </a>
                         <a class="edit-post-profile" aria-label="delete button" id="delete-button" href="{% url 'delete_post' post.id %}"><i class="far fa-trash-alt"></i></a>
+                        </div>
                     </div>
                     {% endfor %}
                     {%else%}
@@ -44,10 +48,6 @@
                     </h2>
                 {% endif%}
                 </div>
-        
-                
-            
-            
         </div>
 
         <!--Likes-->
