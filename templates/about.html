@@ -1,5 +1,42 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-<div class="h1">test</div>
-{%endblock%}
+<div class="container-fluid about-main-container g-0">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col my-auto">
+              <h1 class="text-center hero-text">we went</h1>
+              <hr class="about-line">
+          </div>
+      </div>
+  </div>
+  <div class="container about-us text-center mt-5 mb-5">
+      <div class="row">
+          <div class="col">
+              
+              <h2 class="text-orange">What will we do today?</h2>
+              <p>
+                  Discover and share exciting experiences and adventurous activities.
+              </p>
+          </div>
+      </div>
+  </div>
+  <div class="container mb-5">
+      <div class="row">
+          <div class="col-lg-4 col-md-12 mb-4">
+            <img src="{% static 'images/bikeride.jpg' %}" class="img-fluid mb-4" alt="bike ride image">
+            <img src="{% static 'images/festival.jpg' %}" class="img-fluid mb-4" alt="festival image">
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <img src="{% static 'images/ireland.jpg' %}" class="img-fluid mb-4" alt="ireland scenery">
+            <img src="{% static 'images/food.jpg' %}" class="img-fluid mb-4" alt="food image">
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">  
+            <img src="{% static 'images/city.jpg' %}" class="img-fluid mb-4" alt="dublin city image">
+            <img src="{% static 'images/guinness-img.jpg' %}" class="img-fluid mb-4" alt="guinness storehouse image">
+          </div>
+        </div>
+  </div>
+</div>
+{% endblock %}
+
