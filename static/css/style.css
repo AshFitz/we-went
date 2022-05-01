@@ -327,3 +327,62 @@ a .likes-hover:hover{
     max-width: 100%;
     height: auto;
 }
+
+/*-- Post detail styling--*/
+
+.post-detail-container {
+    background-color: #041f1e;
+    height: 100vh;
+    text-align: center;
+}
+
+.rating-div i {
+    color: #C57B57;
+    background-color:#fefbf1;
+}
+
+.post-detail-image-container {
+    width: 50vw;
+}
+
+.post-detail-like {
+    display: flex;
+    position: relative;
+    flex-direction: row-reverse;
+    right: 125px;
+    top: 7px;
+}
+
+.comment-line-break {
+    border: 1px solid #041f1e;
+}
+
+.comment-user{
+    font-weight: 500;
+    padding-right: 10px;
+    display: inline;
+}
+
+.detail-like {
+    padding-top:4px;
+    background-color: #fefbf1;
+    color: #C57B57;
+}
+
+.post-detail-buttons {
+    text-decoration: none;
+    color: #041f1e;
+}
+
+.comment-main-container, #post-panel-detail {
+    margin: 5px 0;
+    background: #fefbf1;
+    border: 2px solid #1e2d2f;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.button-grouper {
+    position: relative;
+    bottom: 15px;
+}
