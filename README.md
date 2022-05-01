@@ -93,3 +93,8 @@
     * I can create, read, update and deletle posts so that I can manage the content.
     * I can remove posts so that I can filter out any inappropriate posts.
     * I can remove comments so that I can filter out any inappropriate comments.
+
+## Design Choices:
+<p> The design of the site needs to draw the user in to ensure they stay and view what what the site offers. The colours need to be appealing and compliment the the content and the images as wel as the users content and images. The site will have a minimalistic theme to prevent the user from being distracted by the colours. The design will ensure the site is easily navigated which will result in users returning and signing up. 
+</p>
+
