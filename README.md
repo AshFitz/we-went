@@ -98,3 +98,8 @@
 <p> The design of the site needs to draw the user in to ensure they stay and view what what the site offers. The colours need to be appealing and compliment the the content and the images as wel as the users content and images. The site will have a minimalistic theme to prevent the user from being distracted by the colours. The design will ensure the site is easily navigated which will result in users returning and signing up. 
 </p>
 
+### Fonts:
+* [Signika](https://fonts.google.com/specimen/Signika?query=Signika)
+<p>I chose this font family for the webste as it compliments the color scheme, theme and the content well. It is easily readable and adds to the clean and elegant style.
+</p>
+
