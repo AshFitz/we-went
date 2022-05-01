@@ -27,11 +27,11 @@
                                     <form class="d-none" method="POST">
                                         {% csrf_token %}
                                     </form>
-                                    <button type="submit" name="post_id" value="{{post.id}}" class="like-button" data-url={% url 'like'%}><i class="fas fa-heart">
+                                    <button type="submit" name="post_id" value="{{post.id}}" class="like-button" data-url={% url 'like'%}><i class="fas fa-heart home-like">
                                     </i></button>
                                 {% else %}
 
-                                <button type="submit" name="post_id" value="{{post.id}}" class="like-button" data-url={% url 'like'%}><i class="fas fa-heart">
+                                <button type="submit" name="post_id" value="{{post.id}}" class="like-button" data-url={% url 'like'%}><i class="fas fa-heart home-like">
                                 </i></button>
 
                                 {% endif %}
