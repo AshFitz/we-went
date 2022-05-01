@@ -157,6 +157,24 @@ li {
 
 /*---- Profile styling --*/
 
+.profile-welcome-text{
+    color: #fefbf1;
+
+    padding-top: 5px;
+}
+
+.profile-post-button-container{
+    position: relative;
+    bottom: 23px;
+    background-color: #1e2d2fcc;
+}
+
+
+.profile-line{
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(254 251 241), rgba(0, 0, 0, 0));
+    margin-bottom: 25px
+}
+
 .profile-nav {
     position: sticky;
     top: 3rem;
@@ -170,9 +188,16 @@ li {
     height: 200px;
 }
 
+a .profile-image-container:hover{
+    border: ridge;
+    border-color: #fefbf1;
+    border-bottom: none;
+}
+
 .edit-post-profile {
     height: min-content;
     width: min-content;
+    
 }
 
 .profile-nav-list li:active,
@@ -191,6 +216,8 @@ li {
 .edit-post-profile i{
     background-color: inherit;
     color: #fefbf1;
+    padding-left:10px;
+    padding-right:10px;
 
 }
 .edit-post-profile i:hover{
@@ -211,7 +238,7 @@ li {
 
 
 #post-panel {
-
+    margin-top:20px
 }
 
 #likes-panel {
