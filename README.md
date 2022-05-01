@@ -117,3 +117,7 @@
 * Quaternary - #FEFBF1 - This is another off white colour. This was used for the post card on the activity page adn post detail page. It was also used for the profile nav and other text. 
 
 ![alt text](https://github.com/AshFitz/we-went/blob/main/static/images/we-went-coolors.png)
+
+### Images
+<p> The images I used on the home page compliment the content and the colour. The images were in contrast with the theme of adventures and activities. They help the user to understand the goal and use of the site. The images were sourced from  <a href="https://unsplash.com/" target="_blank">Unsplash</a> and <a href="https://pexels.com/" target="_blank">Pexels</a>, which are high quality and completely free stock photos.
+</p>
