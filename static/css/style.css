@@ -193,12 +193,64 @@ a .profile-image-container:hover{
     border-color: #fefbf1;
     border-bottom: none;
 }
+a .likes-hover:hover{
+    border: ridge;
+    border-color: #fefbf1;
+    border-bottom: ridge;
+}
+
+.no-post-text, .logout-text{
+    color:#fefbf1;
+}
+
+.btn-warning {
+    margin-right: 20px;
+    background-color: #C57B57;
+    border: none;
+    color: #e6e5de;
+}
+
+.btn-warning:hover {
+    background-color: #C57B57;
+    border: none;
+    color:#1e2d2f
+}
+
+.btn-success {
+    background-color: #fefbf1;
+    color:#1e2d2f;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #fefbf1;
+    color:#C57B57;
+    border: none;
+}
+
+
+.no-post-icon i {
+    background: inherit;
+    color: #C57B57;
+    font-size: 3rem;
+    margin-top:20px;
+    position: relative;
+    top: 10px;
+    left: 15px;
+}
+.no-post-icon i:hover {
+    color: #fefbf1;
+}
 
 .edit-post-profile {
     height: min-content;
     width: min-content;
-    
 }
+
+.profile-nav-list a{
+    border-radius: 5px;
+}
+
 
 .profile-nav-list li:active,
 .profile-nav-list li:hover,
@@ -243,9 +295,11 @@ a .profile-image-container:hover{
 
 #likes-panel {
     display: none;
+    margin-top:20px
 }
 
 #logout-panel {
     display: none;
+    margin-top:20px
 }
 

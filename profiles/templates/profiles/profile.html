@@ -18,68 +18,71 @@
                         <li class="list-group-item profile-link-active " id="likes-nav-button"><i class="fas fa-fw fa-heart pr-1"></i>My Likes</li>
                     </a>  
                     <a class="m-1" href='#' aria-label="profile nav logout button">
-                        <li class="list-group-item profile-link-active " id="logout-nav-button"><i class="fas fa-fw fa-sign-out-alt pr-1"></i>Log Out</li>
+                        <li class="list-group-item profile-link-active " id="logout-nav-button"><i class="fas fa-fw fa-sign-out-alt pr-1"></i>Logout</li>
                     </a>      
                 </ul>
             </div>
         </div>
         <!--posts-->
         <div class="col-md-8 col-12" id="post-panel">
-                <div class="row">
-                    {% if posts %}
-                    {% for post in posts %} 
-                    <div class="col-sm-12 col-md-6 col-lg-4 text-center">
-                        <a href="{% url 'post_detail' post.id %}">
-                            <img class="profile-image-container" src="{{ post.featured_image.url}}">
-                        </a>
-                        <div class="profile-post-button-container">
-
-                        
+            <div class="row">
+                {% if posts %}
+                {% for post in posts %} 
+                <div class="col-sm-12 col-md-6 col-lg-4 text-center">
+                    <a href="{% url 'post_detail' post.id %}">
+                        <img class="profile-image-container" src="{{ post.featured_image.url}}">
+                    </a>
+                    <div class="profile-post-button-container">
                         <a class="edit-post-profile" href="{% url 'edit_post' post.id %}">
                             <i class="far fa-edit"></i>
                         </a>
                         <a class="edit-post-profile" aria-label="delete button" id="delete-button" href="{% url 'delete_post' post.id %}"><i class="far fa-trash-alt"></i></a>
-                        </div>
                     </div>
-                    {% endfor %}
-                    {%else%}
-                    <h2>
-                    Sorry youve no posts now.
-                    </h2>
-                {% endif%}
                 </div>
+                {% endfor %}
+                {%else%}
+                <div class="no-post-container text-center">
+                    <h2 class="no-post-text">
+                        Sorry you have not posted yet!
+                    </h2>
+                    <h2 class="no-post-text text-center d-inline">
+                        Add a post here <a class="no-post-icon text-center d-inline" href="{% url 'add_post' %}"><i class="far fa-plus-square"></i></a>
+                    </h2>
+                </div>
+                {% endif%}
+            </div>
         </div>
 
         <!--Likes-->
-        <div class="col-md-8 col-12" id="likes-panel">LIKES
-            {% if likes %}
-            {% for like in likes %}
-            <div class="col-12">
-                <h2>Title: {{ like.title }}</h2>
+        <div class="col-md-8 col-12" id="likes-panel">
+            <div class="row">
+                {% if likes %}
+                {% for like in likes %} 
+                <div class="col-sm-12 col-md-6 col-lg-4 text-center mb-4">
+                    <a href="{% url 'post_detail' like.id %}">
+                        <img class="profile-image-container likes-hover" src="{{ like.featured_image.url}}">
+                    </a>
+
+                </div>
+                {% endfor %}
+                {%else%}
+                <div class="no-post-container text-center">
+                    <h2 class="no-post-text">
+                        Sorry you have not posted yet!
+                    </h2>
+                    <h2 class="no-post-text text-center d-inline">
+                        Add a post here <a class="no-post-icon text-center d-inline" href="{% url 'add_post' %}"><i class="far fa-plus-square"></i></a>
+                    </h2>
+                </div>
+                {% endif%}
             </div>
-            <div class="col-12">
-                <h2 class="post-description">Description: {{ like.description | safe }}</h2>
-            </div>
-            <div class="col-12">
-                <h2>Location: {{ like.location }}</h2>
-            </div>
-            <div class="col-6">
-                <h2 class="">{{ like.rating }}</h2>
-            </div>
-            <div class="col-12 image-container">
-                <img src="{{ like.featured_image.url}}">
-            </div>
-           
-            {% endfor %}
-            {% endif %}
         </div>
-        
+
     <!-- Logout Panel -->
     <div class="col-md-8 col-12" id="logout-panel">
         <div class="text-center">
-            <h2 class="text-center">Log out?</h2>
-            <p class="text-center">Are you sure you wish to log out?</p>
-            <a href="{% url 'account_logout' %}" aria-label="Log out" class="btn btn-warning text-center rounded mb-2">Log Out</a>
+            <h2 class="text-center pb-3 logout-text">Are you sure you want to logout?</h2>
+            <a href="{% url 'account_logout' %}" aria-label="Log out" class="btn btn-warning text-center rounded mb-2 ">Logout</a>
             <a href="{% url 'activity' %}" aria-label="Return to activity page" class="btn btn-success text-center rounded mb-2">Activity Page</a>
         </div>
     </div>
