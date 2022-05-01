@@ -7,6 +7,7 @@
         <!--Activity Post's Column-->
         <div class="col-md-6 offset-md-3">
             {% for post in post_list %}
+            <a class="post-link" href="{% url 'post_detail' post.id %}">
             <div class="container post-container">
                 <div class="row post-text">
                     <div class="col-3 my-auto">
@@ -14,20 +15,9 @@
                             <div class="col-12 rotate-title">
                                 <h2 class="title-text">{{ post.title }}</h2>
                             </div>
+                            <hr class="line-break">
                         </div>
                     </div>
-                    {% comment %} <div class="col-12">
-                        <h2>Title: {{ post.title }}</h2>
-                    </div> {% endcomment %}
-                    {% comment %} <div class="col-12">
-                        <h2 class="post-description">Description: {{ post.description | safe }}</h2>
-                    </div>
-                    <div class="col-12">
-                        <h2>Location: {{ post.location }}</h2>
-                    </div> {% endcomment %}
-                    {% comment %} <div class="col-6">
-                        <h2 class="">{{ post.rating }}</h2>
-                    </div> {% endcomment %}
                     <div class="col-9 image-container">
                         <img class="post-image" src="{{ post.featured_image.url}}">
                     </div>
@@ -76,7 +66,9 @@
                         </div>
                     </div> {% endcomment %}
                 </div>
+            </a>
             </div>
+        
             {% endfor %}
         </div>       
     </div>
