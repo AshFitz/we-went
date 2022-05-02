@@ -3,19 +3,21 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-<div class="container post-container">
+<div class="container-fluid edit-comment-container">
+  <div class="inner-comment-container">
     <div class="row post-text">
         <div class="col-12">
-          <form action= "#" method="POST" class="text-center"> 
+          <form action= "#" method="POST" class="text-center" placeholder="Add your comment"> 
             <div class="col-12">
               {% csrf_token %}
               {{ form | crispy }}
             </div>
-            <div class="col-sm-12 col-12 text-center">
-              <button class="btn btn-success" aria-label="Update comment button">Update your comment</button>
+            <div class="col-sm-12 col-12 text-center pt-5">
+              <button class="btn btn-comment" aria-label="Update comment button">Update your comment</button>
             </div>
           </form>
         </div>
     </div>
+  </div>
 </div>
 {%endblock%}
