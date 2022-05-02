@@ -3,16 +3,17 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="row">
-    <div class="col">
-        <form action="{% url 'add_post' %}" method="POST" enctype="multipart/form-data"> 
-            {% csrf_token %}
-            {{ post_form|crispy }}
-            
-            <button class="btn btn-success">Submit</button>
-        </form>
-    </div>
+<div class="container-fluid edit-post-container">
+    <div class="inner-edit-container">
+        <div class="row post-text">
+            <div class="col">
+                <form action="{% url 'add_post' %}" method="POST" enctype="multipart/form-data"> 
+                    {% csrf_token %}
+                    {{ post_form|crispy }}
+                    <button class="btn btn-success-post mt-3">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
