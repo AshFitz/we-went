@@ -40,7 +40,7 @@ $(document).ready(function(){
 })
 
 // disable submit button after click for time, to allow image upload
-var fewSeconds = 5;
+var fewSeconds = 7;
 $('#add-post-button').click(function(){
     // Ajax request
     var btn = $(this);
