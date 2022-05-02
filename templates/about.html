@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <div class="container-fluid about-main-container g-0">
-  <div class="container-fluid">
+  <div class="container-fluid overflow-hidden">
       <div class="row">
           <div class="col my-auto">
               <h1 class="text-center hero-text">we went</h1>
@@ -13,7 +13,6 @@
   <div class="container about-us text-center mt-5 mb-5">
       <div class="row">
           <div class="col">
-              
               <h2 class="text-orange">What will we do today?</h2>
               <p>
                   Discover and share exciting experiences and adventurous activities.
@@ -35,7 +34,7 @@
             <img src="{% static 'images/city.jpg' %}" class="img-fluid mb-4" alt="dublin city image">
             <img src="{% static 'images/guinness-img.jpg' %}" class="img-fluid mb-4" alt="guinness storehouse image">
           </div>
-        </div>
+      </div>
   </div>
 </div>
 {% endblock %}
