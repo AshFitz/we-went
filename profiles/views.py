@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from activity.models import Post, Comment
 from .models import UserProfile
 
-
+@login_required
 def profile(request):
     """
     View to get users profile
