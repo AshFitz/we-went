@@ -29,3 +29,12 @@ $('#logout-nav-button').click(function(){
     logOutPanel.show();
     return false;
 });
+
+// click handler for bootstraps modal
+$('#deleteModal').on('shown.bs.modal', function () {
+    $('#deleteModal').trigger('focus')
+  });
+
+$(document).ready(function(){
+    $('.toast').toast('show');
+})
