@@ -20,27 +20,4 @@
       </div>
     </div>
   </div>
-
-
-            {% comment %} <div class="container">
-                <div class="row">
-                    <div class="col">
-                        
-                        {% if user.is_authenticated %}
-
-                        <h3>Add a comment:</h3>
-                        <p>{{ user.username }}</p>
-                        <form method="post">
-                            {{ comment_form | crispy }}
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-success">Comment</button>
-                        </form>
-
-                        {% endif %}
-
-                    </div>
-                </div>
-            </div> {% endcomment %}
-
-
 {%endblock%}
