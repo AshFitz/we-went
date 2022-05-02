@@ -365,6 +365,7 @@ Users are notified of their actions and or errors via a popup message.
     * Add comment
     * Edit a comment
     * Delete a comment
+    * Image file size too big
     * Login as a user
     * Log out as a user
     * Add a post
