@@ -3,6 +3,8 @@
 <p> we went is a social media like platform where users can come to discover a variety of experiences and adventures within Ireland. These adventures could be anything from, picturesque walks to thrilling adventures. A user can sign up to share their own recent activities and adventures. They also have the ability to interact on other user's posts by liking and commenting. The design of the site is inspired by Instagram and Facebook, to provide a social media experience. 
 </p>
 
+<img src="https://github.com/AshFitz/we-went/blob/main/static/images/Wireframes/Responsive-views.JPG">
+
 ## User Experience
 
 ### Project Goals:
@@ -204,6 +206,10 @@ User | user | OneToOneField | User, on_delete=models.CASCADE, related_name="prof
 <p> I took an aglie styled approach. I took time creating my user stories to keep within my time-frame and focus on the most important features and functionalities. If a user story began it was taken from the to do column and moved to in progress. Once each user story was completed it was then moved to the done box. I focused on not spending too much time on a particular ticket I was having issues with. I would move this back to to-do and try to complete the other tickets within the in progrss column. Using this method was brilliant for time-management. I was using my time well and at each point in the progress I had a clear understanding of the next steps and the overall goal.</p>
 
 <p> A part of my planning was using <a href="https://coolors.co/" target="_blank">coolors</a> to chose the correct colour palette.</p>
+
+#### Validations
+[CSS Validator](https://github.com/AshFitz/we-went/blob/main/static/images/Wireframes/CSS-validator.JPG)
+[Lighthouse Validator](https://github.com/AshFitz/we-went/blob/main/static/images/Wireframes/lighthouse.png)
 
 #### Feature Testing:
 
