@@ -62,16 +62,16 @@
                     <a href="{% url 'post_detail' like.id %}">
                         <img class="profile-image-container likes-hover" src="{{ like.featured_image.url}}">
                     </a>
-
                 </div>
                 {% endfor %}
                 {%else%}
                 <div class="no-post-container text-center">
                     <h2 class="no-post-text">
-                        Sorry you have not posted yet!
+                        You have not liked anything yet.
                     </h2>
                     <h2 class="no-post-text text-center d-inline">
-                        Add a post here <a class="no-post-icon text-center d-inline" href="{% url 'add_post' %}"><i class="far fa-plus-square"></i></a>
+                    Click the icon to view the posts!
+                    <a class="no-post-icon text-center d-inline" href="{% url 'activity' %}"><i class="far fa-image"></i></a>
                     </h2>
                 </div>
                 {% endif%}
