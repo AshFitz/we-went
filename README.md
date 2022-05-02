@@ -127,3 +127,37 @@
 </p>
 
 <p> The wireframes for the project can be found <a href="https://github.com/AshFitz/we-went/tree/main/static/images/Wireframes" target="_blank">here.</a></p>
+
+### Database Design:
+* In the production version of we went the database is utilizing PostgreSQL and is hosted and provided by Heroku.
+
+#### The Activity App:
+##### Post Model
+Name | Key in db | Field Type | Arguments
+:-----:|:-----:|:-----:|:-----:
+User Profile | user_profile | ForeignKey | UserProfile, on_delete=models.CASCADE, null=True, related_name='user_posts'
+Title | title | CharField | max_length=220, unique=False
+Location | location | CharField | max_length=220
+Rating | rating | FloatField | default=1
+Author | author | ForeignKey | User, on_delete=models.CASCADE, related_name="activity_post"
+Description | description | TestField | 
+Image | featured_image | CloudinaryField | 'image', blank=False
+Created on | created_on | DateTimeField | auto_now_add=True
+Likes | likes | ManyToManyField | User, related_name='activity_likes', blank=True
+Like count | like_count | models.BigIntegerField |default='0'
+
+##### Comment Model
+Name | Key in db | Field Type | Arguments
+:-----:|:-----:|:-----:|:-----:
+User | user | ForeignKey | User, on_delete=models.CASCADE, null=True, blank=True, related_name="user_comment"
+Post | post | ForeignKey | Post, on_delete=models.CASCADE, related_name='comments'
+Name | name | CharField | max_length=80
+Email | email | EmailField | 
+Body | body | TextField | 
+Created On | created_on | DateTimeField | auto_now_add=True
+
+##### UserProfile Model
+Name | Key in db | Field Type | Arguments
+:-----:|:-----:|:-----:|:-----:
+User | user | OneToOneField | User, on_delete=models.CASCADE, related_name="profile"
+
