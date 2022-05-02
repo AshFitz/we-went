@@ -19,7 +19,7 @@ class PostForm(forms.ModelForm):
             'rating': forms.NumberInput(
                 attrs={
                     "type": 'number',
-                    "value": 1,
+                    "value": 'x out of 5',
                     "min": 1,
                     "max": 5,
                 }
