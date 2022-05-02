@@ -3,48 +3,26 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-<div class="container post-container">
-    <div class="row post-text">
-        <div class="col-12">
-            <h1>{{ post.author }}</h1>
-        </div>
-        <div class="col-12">
-            <h2>Title: {{ post.title }}</h2>
-        </div>
-        <div class="col-12">
-            <h2 class="post-description">Description: {{ post.description | safe }}</h2>
-        </div>
-        <div class="col-12">
-            <h2>Location: {{ post.location }}</h2>
-        </div>
-        <div class="col-6">
-            <h2 class="">{{ post.rating }}</h2>
-        </div>
-        <div class="col-12 image-container">
-            <img src="{{ post.featured_image.url}}">
-        </div>
-        <div class="col-6">
-            <p>{{ post.like_count }}</p>
-        </div>
-        <div class="col-12">
-            {% for comment in comments %}
-            {{ comment.name }}
-            {{ comment.body }}
-            {% endfor %}
-        </div>
-        <div class="col">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <a href="{% url 'comment' post.id %}">
-                            <i class="fas fa-comment"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="container">
+ <div class="container-fluid edit-comment-container">
+    <div class="inner-comment-container">
+      <div class="row post-text">
+          <div class="col-12">
+            <form action= "#" method="POST" class="text-center"> 
+              <div class="col-12">
+                {% csrf_token %}
+                {{ comment_form | crispy }}
+              </div>
+              <div class="col-sm-12 col-12 text-center pt-5">
+                <button class="btn btn-comment" aria-label="Update comment button">Add comment</button>
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+            {% comment %} <div class="container">
                 <div class="row">
                     <div class="col">
                         
@@ -62,7 +40,7 @@
 
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div> {% endcomment %}
+
+
 {%endblock%}
