@@ -511,6 +511,125 @@ a .likes-hover:hover{
     color: #fefbf1;
 }
 
-
 /*--Media Queries--*/
 
+@media screen 
+and (max-width: 1280px){
+    .about-main-container {
+        min-height: 100%;
+    }
+    .main-bg {
+        padding-bottom: 64px;
+}
+
+/* standard Ipad*/
+@media only screen 
+and (max-width:1200px) {
+    .about-main-container {
+        min-height: 100%;
+    }
+    .main-bg {
+        padding-bottom: 50px;
+    }
+    .inner-edit-container {
+        padding: 0 60px;
+    }
+}
+
+/* Iphone 6/7/8 */
+@media only screen 
+and (max-width: 375px) 
+and (max-height: 812px) {
+      .profile-container{
+          padding-bottom: 0;
+      }
+  }
+
+/* Iphone 6/7/8 */
+@media only screen 
+  and (min-width: 375px) 
+  and (max-width: 667px) {
+    .collage-container {
+        overflow: hidden;
+    }
+
+    .about-us {
+        overflow: hidden;
+    }
+
+    .title-logo {
+        width: 90px;
+    }
+
+    .about-main-container {
+        min-height: 100%;
+  }
+
+}
+
+/* Iphone 6/7/8 plus*/
+@media only screen 
+  and (min-width: 414px) 
+  and (max-width: 736px) {
+    .collage-container {
+        overflow: hidden;
+    }
+
+    .about-us {
+        overflow: hidden;
+    }
+  }
+
+
+/* Iphone 5 / 5se only */
+@media screen and (min-width : 320px) 
+and (max-width : 568px) {
+    .main-bg{
+        padding-bottom: 50px;
+    }
+
+    .post-detail-like{
+        right: -5px;
+    }
+
+    .inner-comment-container {
+        padding: 20px 10px;
+    }
+
+    .edit-comment-container {
+        padding-top: 10px;
+        padding-bottom: 50px;
+    }
+
+    .edit-post-container, .inner-edit-container{
+        padding-bottom: 50px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .profile-container{
+        height: 100%;
+        padding-bottom: 37vh;
+    }
+
+    .message-container {
+        width: 130px;
+        top: 1.125rem;
+    }
+
+    .about-main-container{
+        min-height: 100%;
+    }
+
+    .collage-container {
+        overflow: hidden;
+    }
+
+    .about-us {
+        overflow: hidden;
+    }
+
+    .about-main-container {
+        min-height: 100%;
+  }
+}
