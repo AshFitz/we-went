@@ -1,7 +1,9 @@
 from django.shortcuts import render
 
-# Create your views here.
 def about(request):
+    """
+    View to render the about template
+    """
     page_title = "About Us"
     template = "about.html"
     context = {

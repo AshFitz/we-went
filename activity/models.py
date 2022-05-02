@@ -5,7 +5,12 @@ from profiles.models import UserProfile
 
 
 class Post(models.Model):
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True, related_name='user_posts')
+    """
+    Post model to maintain a post from a user and
+    allow updates of that post.
+    """
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE,
+                                    null=True, related_name='user_posts')
     title = models.CharField(max_length=220, unique=False)
     location = models.CharField(max_length=220)
     rating = models.FloatField(default=1)
@@ -31,16 +36,20 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name="user_comment")
+    """
+    Comment model which will store users comments,
+    is linked to the Post model with a foreignkey post.
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True,
+                            blank=True, related_name="user_comment")
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    
+
     class Meta:
         ordering = ['created_on']
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
-

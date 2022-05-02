@@ -3,7 +3,6 @@
 
 html {
     height: 100%
-    
 }
 
 body {
@@ -19,9 +18,11 @@ h2 {
     font-size: 20px;
     text-decoration: none;
 }
+
 a {
     text-decoration: none;
 }
+
 /*---- Uppernav styling --*/
 
 button {
@@ -33,6 +34,7 @@ button {
 }
 
 /*---- Footer styling --*/
+
 footer {
     display: flex!important;
     justify-content: space-around;
@@ -92,6 +94,7 @@ li {
 #search-addon, button, i {
     background-color: #e6e5de;
 }
+
 .post-container {
     background-color: #fefbf1;
     border-radius: 5px;
@@ -166,7 +169,6 @@ li {
     transform: rotate(90deg);
 }
 
-
 /*---- Profile styling --*/
 
 .profile-welcome-text{
@@ -180,7 +182,6 @@ li {
     bottom: 23px;
     background-color: #1e2d2fcc;
 }
-
 
 .profile-line{
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(254 251 241), rgba(0, 0, 0, 0));
@@ -240,7 +241,6 @@ a .likes-hover:hover{
     border: none;
 }
 
-
 .no-post-icon i {
     background: inherit;
     color: #C57B57;
@@ -250,6 +250,7 @@ a .likes-hover:hover{
     top: 10px;
     left: 15px;
 }
+
 .no-post-icon i:hover {
     color: #fefbf1;
 }
@@ -262,7 +263,6 @@ a .likes-hover:hover{
 .profile-nav-list a{
     border-radius: 5px;
 }
-
 
 .profile-nav-list li:active,
 .profile-nav-list li:hover,
@@ -284,15 +284,16 @@ a .likes-hover:hover{
     padding-right:10px;
 
 }
+
 .edit-post-profile i:hover{
     color: #C57B57;
 
 }
+
 .profile-link-active i{
     background-color: inherit;
     padding-right:20px
 }
-
 
 .list-group-item{ 
    background-color: #fefbf1;

@@ -4,29 +4,24 @@ from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from django.http import HttpResponseRedirect
 from .models import Post, Comment, UserProfile
 from .forms import CommentForm, PostForm
 
 
-
 class PostList(generic.ListView):
+    """
+    Class to query the db for posts by date created.
+    """
     model = Post
     queryset = Post.objects.order_by('-created_on')
     template_name = 'index.html'
 
-    #maybe not needed now.
-    # def get_context_data(self, **kwargs):
-    #     context = super(PostList, self).get_context_data(**kwargs)
-    #     context["comment_form"] = CommentForm()
-    #     return context
-
-
 class CommentList(View):
-    """
-    Function to retreive the comment from Db
-    """
+    
     def get(self, request, post_id):
+        """
+        Function to retreive the comments from Db
+        """
         post = get_object_or_404(Post, pk=post_id)
         comments = post.comments.order_by("created_on")
         return render(
@@ -35,15 +30,16 @@ class CommentList(View):
             {
                 "post": post,
                 "comments": comments,
-                "comment_form": CommentForm(),
-     
+                "comment_form": CommentForm()
             }
         )
 
-    """
-    Function to to add a comment to a specific post
-    """
+
     def post(self, request, post_id, *args, **kwargs):
+        """
+        Function to validate if a comment form is valid,
+        if so save to db and update user with a success toast.
+        """
         queryset = Post
         post = get_object_or_404(queryset, pk=post_id)
         comments = post.comments.order_by("created_on")
@@ -72,11 +68,12 @@ class CommentList(View):
         )
 
 
-"""
-View to edit a comment on a post
-"""
 @login_required
 def edit_comment(request, comment_id):
+    """
+    View to edit a comment and update the user
+    via a toast message, instanciate form on load.
+    """
     user = get_object_or_404(Comment, pk=comment_id)
     if request.user == user.user:
         if request.method == "POST":
@@ -99,19 +96,23 @@ def edit_comment(request, comment_id):
     }
     return render(request, template, context)
 
-
-
+@login_required
 def delete_comment(request, comment_id):
+    """
+    View to delete a specific comment
+    by the pk in the db
+    """
     users_comment = get_object_or_404(Comment, pk=comment_id)
     users_comment.delete()
     messages.success(request, 'Comment deleted successfully')
     return redirect(reverse('activity'))
 
-"""
-View to handle the like functionality of a post
-"""
+
 @login_required
 def like(request):
+    """
+    View to handle the like functionality of a post
+    """
     result = 'Data'
     if request.POST.get('action') == 'post':
         result = 'Data'
@@ -129,11 +130,14 @@ def like(request):
             post.save()
         return JsonResponse({'result': result, })
 
-"""
-View to add a post to the database
-"""
+
 @login_required
 def add_post(request):
+    """
+    View to add a post to the database
+    once form is confirmed valid, notify user
+    with toast
+    """
     if request.method == 'POST':
         post_form = PostForm(request.POST, request.FILES)
         profile = get_object_or_404(UserProfile, user=request.user)
@@ -154,11 +158,11 @@ def add_post(request):
     return render(request, "add_post.html", context)
 
 
-"""
-View to edit a post and update the databsae
-"""
 @login_required
 def edit_post(request, post_id):
+    """
+    View to edit a post and update the databsae
+    """
     post = get_object_or_404(Post, pk=post_id)
     if request.user == post.author:
         if request.method == 'POST':
@@ -167,7 +171,6 @@ def edit_post(request, post_id):
                 form.save()
                 return redirect(reverse('edit_post', args=[post.id]))
             else:
-                print("do this")
                 messages.error(request, "Failed to edit post. Please try again")
 
         else:
@@ -187,25 +190,22 @@ def edit_post(request, post_id):
     return render(request, template, context)
 
 
-"""
-View to delete a post and update the database
-"""
 @login_required
 def delete_post(request, post_id):
+    """
+    View to delete a post and update the database
+    """
     post = get_object_or_404(Post, pk=post_id)
     post.delete()
     messages.success(request, 'Your post has been deleted')
-
     return redirect(reverse('activity'))
 
-"""
-View to search post in the database
-"""
 
 def search_posts(request):
+    """
+    View to search post in the database
+    """
     posts = Post.objects.all()
-
-
     if request.method == "POST":
         search = request.POST.get('search-input')
         queries = Q(title__icontains=search) | Q(
@@ -223,10 +223,10 @@ def search_posts(request):
     return render(request, 'searched_posts.html', context)
 
 
-"""
-View to click into individual post
-"""
 def post_detail(request, post_id):
+    """
+    View to click into individual post
+    """
     post = get_object_or_404(Post, pk=post_id)
     comments = post.comments.order_by("created_on")
     context= {

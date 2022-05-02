@@ -5,9 +5,16 @@ from .models import UserProfile
 
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
+    """
+    function to create user profile
+    by checking if its already created.
+    """
     if created:
         UserProfile.objects.create(user=instance)
 
 @receiver(post_save, sender=User)
 def save_profile(sender, instance, **kwargs):
+    """
+    save or update the userprofile
+    """
     instance.profile.save()

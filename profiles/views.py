@@ -1,16 +1,14 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import UserProfile
 from activity.models import Post, Comment
+from .models import UserProfile
+from django.shortcuts import render, get_object_or_404, redirect
 
-# Create your views here.
-
-
-#Profile function
 
 def profile(request):
+    """
+    View to get users profile
+    display posts and likes
+    """
     profile = get_object_or_404(UserProfile, user=request.user)
-    profile_id = request.user.id
-    print(profile_id)
     posts = profile.user_posts.all()
     likes = Post.objects.filter(likes=request.user.id)
     comments = Comment.objects.order_by('created_on')
@@ -23,18 +21,3 @@ def profile(request):
     }
 
     return render(request, template, context)
-
-# def post_history(request, pk):
-#     post = get_object_or_404(Post, pk=pk)
-#     print(post)
-    
-#     template = 'profiles/profile.html'
-#     context = {
-#         'post': post
-#     }
-
-#     return render(request, template, context)
-#Post history
-
-
-#likes history

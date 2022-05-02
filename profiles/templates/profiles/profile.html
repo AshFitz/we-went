@@ -30,7 +30,7 @@
                 {% for post in posts %} 
                 <div class="col-sm-12 col-md-6 col-lg-4 text-center">
                     <a href="{% url 'post_detail' post.id %}">
-                        <img class="profile-image-container" src="{{ post.featured_image.url}}">
+                        <img class="profile-image-container" src="{{ post.featured_image.url}}" alt="image">
                     </a>
                     <div class="profile-post-button-container">
                         <a class="edit-post-profile" href="{% url 'edit_post' post.id %}">
@@ -89,21 +89,5 @@
     </section>
     </div>
 </div>
-
-<!--Post container-->
-{% comment %} <div class="container">
-    <div class="row">
-        <div class="col">
-        
-        </div>
-    </div>
-</div> {% endcomment %}
-<!-- Likes container -->
-{% comment %} <div class="container"> 
-    <div class="row">
-        
-    </div>
-</div> {% endcomment %}
-
 <!-- Ref https://github.com/nemixu for profile nav structure -->
 {%endblock%}
