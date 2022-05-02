@@ -39,17 +39,6 @@ $(document).ready(function(){
     $('.toast').toast('show');
 })
 
-// disable submit button after click for time, to allow image upload
-// var fewSeconds = 7;
-// $('#add-post-button').submit(function(){
-//     // Ajax request
-//     var btn = $(this);
-//     btn.prop('disabled', true);
-//     setTimeout(function(){
-//         btn.prop('disabled', false);
-//     }, fewSeconds*1000);
-// });
-
 $('form').submit(function() {
     $(this).find('button[type="submit"],input[type="submit"]').prop('disabled', true);
   });
