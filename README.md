@@ -1,6 +1,6 @@
 # we went
 
-<p> we went is a social media like platform where users can come to discover a variety of experiences and adventures within Ireland. These adventures could be anything from, picturesque walks to thrilling adventures. A user can sign up to share their own recent activities and adventures. They also have the ability to interact on other user's posts by liking and commenting. 
+<p> we went is a social media like platform where users can come to discover a variety of experiences and adventures within Ireland. These adventures could be anything from, picturesque walks to thrilling adventures. A user can sign up to share their own recent activities and adventures. They also have the ability to interact on other user's posts by liking and commenting. The design of the site is inspired by Instagram and Facebook, to provide a social media experience. 
 </p>
 
 ## User Experience
@@ -390,6 +390,35 @@ The application functions as intended on browsers.
 
 * Verdict:
 This test has met expectations.
+
+## Bugs
+
+### Busgs During Development:
+
+#### Issue with edit comment
+
+##### Bug
+When you attempted to edit a comment it would provide an error.
+
+##### Fix
+The model name and the class name were both "Comment", this was causing a conflict and an overriding issue which resulted in the error 404, Comment object has no attribute model. The class name needed to be updated.
+
+##### Verdict
+This bug was resolved.
+
+#### Issue with delete comment
+
+##### Bug
+When you attempted to delete a comment it would provide an error when trying to get the object.
+
+##### Fix
+The argument name being was incorrect.
+
+##### Verdict
+This bug was resolved.
+
+### Known Bugs
+I wanted a user to be provided with a toast message when they like a post. However, this was not possible, because when a post is liked the page does not reload for this to be displayed. This is due to an ajax request hadnling the like functionality. If I had more time I would work on this bug and try to implement the toast message via ajax.
 
 
 
