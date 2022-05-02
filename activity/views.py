@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, get_list_or_404, reverse, redirect
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.db.models import Q
 from django.contrib import messages
@@ -17,7 +17,6 @@ class PostList(generic.ListView):
     template_name = 'index.html'
 
 class CommentList(View):
-    
     def get(self, request, post_id):
         """
         Function to retreive the comments from Db

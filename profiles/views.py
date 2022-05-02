@@ -1,6 +1,6 @@
+from django.shortcuts import render, get_object_or_404
 from activity.models import Post, Comment
 from .models import UserProfile
-from django.shortcuts import render, get_object_or_404, redirect
 
 
 def profile(request):
