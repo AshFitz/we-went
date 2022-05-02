@@ -169,11 +169,19 @@ li {
     transform: rotate(90deg);
 }
 
+.input-group .form-control:focus {
+    color: #212529;
+    background-color: #fefbf1;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.15rem rgb(30 45 47);
+}
+}
+
 /*---- Profile styling --*/
 
 .profile-welcome-text{
     color: #fefbf1;
-
     padding-top: 5px;
 }
 
