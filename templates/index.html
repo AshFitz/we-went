@@ -8,67 +8,37 @@
         <div class="col-md-6 offset-md-3">
             {% for post in post_list %}
             <a class="post-link" href="{% url 'post_detail' post.id %}">
-            <div class="container post-container">
-                <div class="row post-text">
-                    <div class="col-3 my-auto">
-                        <div class="row"> 
-                            <div class="col-12 rotate-title">
-                                <h2 class="title-text">{{ post.title }}</h2>
-                            </div>
-                            <hr class="line-break">
-                        </div>
-                    </div>
-                    <div class="col-9 image-container">
-                        <img class="post-image" src="{{ post.featured_image.url}}">
-                    </div>
-                    <div class="col-12 like-container">
-                            {% if user.is_authenticated %}
-                                {% if request.user.id in post.liked_by_user %}
-                                    <form class="d-none" method="POST">
-                                        {% csrf_token %}
-                                    </form>
-                                    <button type="submit" name="post_id" value="{{post.id}}" class="like-button" data-url={% url 'like'%}><i class="fas fa-heart home-like">
-                                    </i></button>
-                                {% else %}
-
-                                <button type="submit" name="post_id" value="{{post.id}}" class="like-button" data-url={% url 'like'%}><i class="fas fa-heart home-like">
-                                </i></button>
-
-                                {% endif %}
-                            {% endif %}
-                        <span id="{{post.id}}_like_count">{{ post.like_count }}</span>
-                    </div>
-                    {% comment %} <div class="col-12">
-                        {% for comment in post.comments.all %}
-                        {{ comment.name }}
-                        {{ comment.body }}
-                        {% endfor %}
-                    </div>
-                    <div class="col">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-                                    {% if user.is_authenticated %}
-                                    <a href="{% url 'comment' post.id %}">
-                                        <i class="fas fa-comment">Comment</i>
-                                    </a>
-
-                                    <a href="{% url 'edit_post' post.id %}">
-                                        <i class="fas fa-box">Edit</i>
-                                    </a>
-                                    {% endif %}
-                                    <p>{{ user.profile }} : userprofile </p>
-                                    <p>{{ pos }} : posts </p>
-
-                                    <a class="btn btn-danger" aria-label="delete button" id="delete-button" href="{% url 'delete_post' post.id %}">Delete</a>
+                <div class="container post-container">
+                    <div class="row post-text">
+                        <div class="col-3 my-auto">
+                            <div class="row"> 
+                                <div class="col-12 rotate-title">
+                                    <h2 class="title-text">{{ post.title }}</h2>
                                 </div>
+                                <hr class="line-break">
                             </div>
                         </div>
-                    </div> {% endcomment %}
+                        <div class="col-9 image-container">
+                            <img class="post-image" src="{{ post.featured_image.url}}">
+                        </div>
+                        <div class="col-12 like-container">
+                                {% if user.is_authenticated %}
+                                    {% if request.user.id in post.liked_by_user %}
+                                        <form class="d-none" method="POST">
+                                            {% csrf_token %}
+                                        </form>
+                                        <button type="submit" name="post_id" value="{{post.id}}" class="like-button" data-url={% url 'like'%}><i class="fas fa-heart home-like"></i>
+                                        </button>
+                                        {% else %}
+                                        <button type="submit" name="post_id" value="{{post.id}}" class="like-button" data-url={% url 'like'%}><i class="fas fa-heart home-like"></i>
+                                        </button>
+                                    {% endif %}
+                                {% endif %}
+                            <span id="{{post.id}}_like_count">{{ post.like_count }}</span>
+                        </div>
+                    </div>
                 </div>
-            </a>
-            </div>
-        
+            </a>        
             {% endfor %}
         </div>       
     </div>
