@@ -111,10 +111,10 @@
 <p> I chose the colours below because they suit the theme of the site, adventure and activity. They provides a earthy feel to the site while keeping the it minimalistic. They compliment themselves, the content and the images well. They will help to compliment the users posts also. The content is clearly readable and the site navigates well due to the colours. It increases the appeal of the wesbsite and UX. The colours used across the site are listed below.
 </p>
 
-* Primary Colour - #E6E5DE - This is an off white colour with a grey understone. This colour was used for the nav bar, footer, home background, acitivty background and the logo.
-* Secondary Colour - #041F1E - This is an emerald green colour. This was used for most of the text, icons, logo and the profile background colour.
-* Tertiary Colour - C57B57 - This is a pale orange colour. Which was used for the like, edit and delte post icons, on hover icons, some of the home page text and the post buttons.
-* Quaternary - #FEFBF1 - This is another off white colour. This was used for the post card on the activity page and post detail page. It was also used for the profile nav and other text. 
+* Primary Colour - #E6E5DE - This is an off white colour with a grey understone. This colour was used for the nav bar, footer, home background, and acitivty background.
+* Secondary Colour - #041F1E - This is an emerald green colour. This was used for most of the text, icons, logo, edit/add comment background image and the profile background colour.
+* Tertiary Colour - C57B57 - This is a pale orange colour. Which was used for the like button, edit and delte post icons, on hover icons, some of the home page text and multiple buttons.
+* Quaternary - #FEFBF1 - This is another off white colour. This was used for the post container on the activity page and post detail page. It was also used for the profile nav and text. 
 
 ![alt text](https://github.com/AshFitz/we-went/blob/main/static/images/we-went-coolors.png)
 
@@ -173,5 +173,24 @@ User | user | OneToOneField | User, on_delete=models.CASCADE, related_name="prof
 
 ### Featured that have been developed:
 * <p> A filter by system, on the activity page. This will provide users with a more tailored experience, e.g. star rating, activity type, hashtags and Sunday activities ect.</p>
-*<p> Profile interaction, a user can follow other users and view their posts.</p>
+* <p> Profile interaction, a user can follow other users and view their posts.</p>
 
+## Technologies Used:
+#### Languages:
+* <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">HTML</a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">CSS</a>
+* <a href="https://www.w3schools.com/js/" target="_blank">JavaScript</a>
+* <a href="https://www.json.org/json-en.html" target="_blank">JSON</a>
+* <a href="https://www.python.org/" target="_blank">Python</a>
+
+#### Tools & Libraries:
+* <a href="https://www.djangoproject.com/" target="_blank">Django</a>
+* <a href="https://pip.pypa.io/en/stable/installation/" target="_blank">PIP</a>
+* <a href="https://jquery.com/" target="_blank">jQuery</a>
+* <a href="https://git-scm.com/" target="_blank">Git</a>
+* <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a>
+* <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font-Awesome</a>
+
+#### Databases:
+* <a href="https://www.postgresql.org/" target="_blank">PostgreSQL - Production</a>
+* <a href="https://www.sqlite.org/index.html" target="_blank">SQlite3 - Development</a>
