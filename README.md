@@ -526,6 +526,27 @@ git clone https://github.com/USERNAME/REPOSITORY
 
 Further reading and troubleshooting on cloning a repository from GitHub [here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository "Link to GitHub troubleshooting")
 
+### References
+<p>
+Code Institute - Deployment Steps <br>
+[Logo created using](https://www.freelogodesign.org/)<br>
+[Multiple questions answered with the help of](https://stackoverflow.com/)<br>
+</P>
+
+## Images
+* Images for the website came from [Pexels](https://pexels.com/) and [Unsplash](https://unsplash.com/)
+
+### Acknowledgements
+
+<p> I would to say a big thank you to my mentor Rahul Lakhanpal, for his support and constant feedback throughout developing the website. </p>
+
+<p><strong>This project is for educational purposes only. It was created as a first milestone project for Code Institutes full stack web development course.</strong></p>
+
+
+
+
+
+
 
 
 
