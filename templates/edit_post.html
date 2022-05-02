@@ -3,18 +3,20 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-<div class="container post-container">
+<div class="container-fluid edit-post-container">
+  <div class="inner-edit-container">
     <div class="row post-text">
         <div class="col-12">
           <form action= "{% url 'edit_post' post.id %}" method="POST" enctype="multipart/form-data"> 
             {% csrf_token %}
             {{ form | crispy }}
-            <div class="text-right">
+            <div class="text-right pt-3">
               <a href="{% url 'activity' %}" class="btn btn-warning" aria-label="return to activity page"></i> Back To Activity</a>
-              <button class="btn btn-success" aria-label="update post button"><i class="fas fa-plus-circle"></i> Update Post</button>
+              <button class="btn btn-success-post" aria-label="update post button"><i class="fas fa-plus-circle"></i> Update Post</button>
           </div>
           </form>
         </div>
     </div>
+  </div>
 </div>
 {%endblock%}
