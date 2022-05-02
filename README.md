@@ -114,7 +114,7 @@
 * Primary Colour - #E6E5DE - This is an off white colour with a grey understone. This colour was used for the nav bar, footer, home background, acitivty background and the logo.
 * Secondary Colour - #041F1E - This is an emerald green colour. This was used for most of the text, icons, logo and the profile background colour.
 * Tertiary Colour - C57B57 - This is a pale orange colour. Which was used for the like, edit and delte post icons, on hover icons, some of the home page text and the post buttons.
-* Quaternary - #FEFBF1 - This is another off white colour. This was used for the post card on the activity page adn post detail page. It was also used for the profile nav and other text. 
+* Quaternary - #FEFBF1 - This is another off white colour. This was used for the post card on the activity page and post detail page. It was also used for the profile nav and other text. 
 
 ![alt text](https://github.com/AshFitz/we-went/blob/main/static/images/we-went-coolors.png)
 
@@ -160,4 +160,18 @@ Created On | created_on | DateTimeField | auto_now_add=True
 Name | Key in db | Field Type | Arguments
 :-----:|:-----:|:-----:|:-----:
 User | user | OneToOneField | User, on_delete=models.CASCADE, related_name="profile"
+
+## Features:
+
+### Featured that have been developed:
+
+* <p>Signup, a user can login and access their user profile.</p>
+* <p>A user that has signed up can like other users posts.</p>
+* <p>A user that has signed up can comment on other users posts as well as their own. They can also edit and delete these comments.</p>
+* <p>A user that has signed up can add their own post. They also have the option to edit and delete their posts.</p>
+* <p> All users can interact with the search bar to find post by keywords. </p>
+
+### Featured that have been developed:
+* <p> A filter by system, on the activity page. This will provide users with a more tailored experience, e.g. star rating, activity type, hashtags and Sunday activities ect.</p>
+*<p> Profile interaction, a user can follow other users and view their posts.</p>
 
