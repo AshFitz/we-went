@@ -38,3 +38,14 @@ $('#deleteModal').on('shown.bs.modal', function () {
 $(document).ready(function(){
     $('.toast').toast('show');
 })
+
+// disable submit button after click for time, to allow image upload
+var fewSeconds = 5;
+$('#add-post-button').click(function(){
+    // Ajax request
+    var btn = $(this);
+    btn.prop('disabled', true);
+    setTimeout(function(){
+        btn.prop('disabled', false);
+    }, fewSeconds*1000);
+});
