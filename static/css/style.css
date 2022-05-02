@@ -1,6 +1,14 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Signika:wght@400;500;600&display=swap');
 
+html {
+    height: 100%
+}
+
+body {
+    min-height: 100%
+}
+
 h1 {
     font-size: 30px;
 }
@@ -124,6 +132,8 @@ li {
 .main-bg {
     background-color: #e6e5de;
     text-align: -webkit-center;
+    min-height: 100vh;
+    padding-top: 60px;
 }
 
 .post-text {
@@ -332,17 +342,20 @@ a .likes-hover:hover{
 
 .post-detail-container {
     background-color: #041f1e;
-    height: 100vh;
+    height: min-content;
     text-align: center;
+    padding-bottom: 100px;
+    min-height: 100vh;
 }
 
-.rating-div i {
+.rating-div i, .fa-comment {
     color: #C57B57;
     background-color:#fefbf1;
 }
 
 .post-detail-image-container {
-    width: 50vw;
+    width: 80%;
+    border-radius: 8px;
 }
 
 .post-detail-like {
@@ -374,6 +387,14 @@ a .likes-hover:hover{
     color: #041f1e;
 }
 
+.post-detail-buttons i {
+    background-color: #fefbf1;
+}
+
+.post-detail-buttons i:hover {
+    color: #C57B57;
+}
+
 .comment-main-container, #post-panel-detail {
     margin: 5px 0;
     background: #fefbf1;
@@ -385,4 +406,70 @@ a .likes-hover:hover{
 .button-grouper {
     position: relative;
     bottom: 15px;
+
 }
+
+.post-container-buttons {
+    text-align-last: right;
+    padding-bottom: 20px;
+}
+
+.btn-secondary, .btn-secondary:hover {
+    background-color: #041f1e;
+    color: #e6e5de;
+}
+
+.btn-danger, .btn-danger:hover {
+    background-color: #C57B57;
+    border: none;
+}
+
+.delete-post-btn, .fa-edit{
+    color:#C57B57;
+    background-color: #fefbf1;
+}
+
+.fa-edit {
+    margin-right:10px;
+}
+
+.btn-comment {
+    padding: 6px 4.6875em;
+    color: #fff;
+    background-color: #C57B57;
+    border-color: #C57B57;
+}
+
+.comment-main-container-button {
+    margin: 5px 0;
+    background: #041f1e;
+    padding: 12px;
+}
+
+/*-- Edit comment page --*/
+
+.edit-comment-container {
+    background-color: #e6e5de;
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.inner-comment-container {
+    background-color: #041f1e;
+    padding:40px 100px;
+    border-radius: 8px;
+}
+
+.form-group label {
+    color: #e6e5de;
+    padding-bottom: 10px;
+}
+
+.message-container {
+    position: fixed;
+    top: 5.125rem;
+    right: 0.9375rem;
+    z-index: 9999;
+  }
