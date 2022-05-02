@@ -140,16 +140,18 @@ def add_post(request):
     if request.method == 'POST':
         post_form = PostForm(request.POST, request.FILES)
         profile = get_object_or_404(UserProfile, user=request.user)
-
+        MAX_SIZE = 10485759
         if post_form.is_valid():
             post_form = post_form.save(commit=False)
             post_form.user_profile = profile
             post_form.author = request.user
-            post_form.save()
-            messages.success(request, "Post Created!")
-            return redirect("activity")
-        else:
-            messages.warning(request, "Your image file size is too big!")
+            if request.FILES['featured_image'].size > MAX_SIZE:
+                messages.warning(request, "Your image file size is too big!")
+                return redirect("add_post")
+            else:
+                post_form.save()
+        messages.success(request, "Post Created!")
+        return redirect("activity")
 
     else:
         post_form = PostForm()
