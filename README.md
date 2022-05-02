@@ -423,49 +423,49 @@ I wanted a user to be provided with a toast message when they like a post. Howev
 ## Deployment Steps
 
 ### Heroku Deployment
-    * Go to the [Heroku](https://id.heroku.com/login) site
-    * Log in.
-    * Click the "New" button and click "Creat new app"
-    * Provide a name for the app in the "App name" field
-    * Select your region from the dropdown menu
-    * Click "Create App"
-    * Add Database to App Resources, located in the Resources Tab, Add-ons, search and add e.g. ‘Heroku Postgres’
-    * Copy DATABASE_URL, located in the Settings Tab, in Config Vars, Copy Text
+1. Go to the [Heroku](https://id.heroku.com/login) site
+2. Log in.
+3. Click the "New" button and click "Creat new app"
+4. Provide a name for the app in the "App name" field
+5. Select your region from the dropdown menu
+6. Click "Create App"
+7. Add Database to App Resources, located in the Resources Tab, Add-ons, search and add e.g. ‘Heroku Postgres’
+8. Copy DATABASE_URL, located in the Settings Tab, in Config Vars, Copy Text
 
 ### Attach Database 
-    * In gitpod, create new env.py file in top level directory, e.g. env.py
-    * In env.py, import os library, "import os"
-    * Set environment variables, os.environ["DATABASE_URL"] = "Paste in Heroku DATABASE_URL Link"
-    * Add in secrect key, os.environ["SECRET_KEY"] = "Make up a randomSecretKey"
-    * In heroku, add Secret Key to Config Vars, SECRET_KEY, “randomSecretKey”
+1. In gitpod, create new env.py file in top level directory, e.g. env.py
+2. In env.py, import os library, "import os"
+3. Set environment variables, os.environ["DATABASE_URL"] = "Paste in Heroku DATABASE_URL Link"
+4. Add in secrect key, os.environ["SECRET_KEY"] = "Make up a randomSecretKey"
+5. In heroku, add Secret Key to Config Vars, SECRET_KEY, “randomSecretKey”
 
 ### Prepare Environment and settings.py
-    * In settings.py, reference env.py,
+1. In settings.py, reference env.py,
     from pathlib import Path
     import os
     import dj_database_url
     if os.path.isfile("env.py"):
     import env
-    * Remove the insecure secret key and replace (links to the secret key variable on Heroku), SECRET_KEY = os.environ.get('SECRET_KEY')
-    * Replace DATABASES Section, comment out the old DataBases Section (links to the DATATBASE_URL variable on Heroku), 
+2. Remove the insecure secret key and replace (links to the secret key variable on Heroku), SECRET_KEY = os.environ.get('SECRET_KEY')
+3. Replace DATABASES Section, comment out the old DataBases Section (links to the DATATBASE_URL variable on Heroku), 
     DATABASES = {
     'default':
     dj_database_url.parse(os.environ.get("DATABASE_
     URL"))
-    * In the terminal, Make Migrations, python3 manage.py migrate
+4. In the terminal, Make Migrations, python3 manage.py migrate
     
 ### Store static and media files on Cloudinary
-    * In cloudinary, Copy your CLOUDINARY_URL, e.g. API Environment Variable. From Cloudinary Dashboard
-    * In env.py, add Cloudinary URL to env.py (be sure to paste in the correct section of the link), os.environ["CLOUDINARY_URL"] ="cloudinary://9444:SUZi@dbhyuj5mc"
-    * In Heroku, add Cloudinary URL to Heroku Config Vars (be sure to paste in the correct section of the link), Add to Settings tab in Config Vars e.g. COUDINARY_URL, cloudinary://9444:SUZi@dbhyuj5mc
-    * Add DISABLE_COLLECTSTATIC to Heroku Config Vars (temporary step for the moment, must be removed before deployment), e.g. DISABLE_COLLECTSTATIC, 1
-    * In settings.py, add Cloudinary Libraries to installed apps, ORDER IS IMPORTANT,
+1. In cloudinary, Copy your CLOUDINARY_URL, e.g. API Environment Variable. From Cloudinary Dashboard
+2. In env.py, add Cloudinary URL to env.py (be sure to paste in the correct section of the link), os.environ["CLOUDINARY_URL"] ="cloudinary://9444:SUZi@dbhyuj5mc"
+3. In Heroku, add Cloudinary URL to Heroku Config Vars (be sure to paste in the correct section of the link), Add to Settings tab in Config Vars e.g. COUDINARY_URL, cloudinary://9444:SUZi@dbhyuj5mc
+4. Add DISABLE_COLLECTSTATIC to Heroku Config Vars (temporary step for the moment, must be removed before deployment), e.g. DISABLE_COLLECTSTATIC, 1
+5. In settings.py, add Cloudinary Libraries to installed apps, ORDER IS IMPORTANT,
     ...
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
     ...
-    * Tell Django to use Cloudinaryto store media and static files (place under the Static files Note),
+6. Tell Django to use Cloudinaryto store media and static files (place under the Static files Note),
     STATIC_URL = '/static/'
     STATICFILES_STORAGE =
     'cloudinary_storage.storage.StaticHashedCloudinaryS
@@ -476,22 +476,56 @@ I wanted a user to be provided with a toast message when they like a post. Howev
     MEDIA_URL = '/media/'
     DEFAULT_FILE_STORAGE =
     'cloudinary_storage.storage.MediaCloudinaryStorage'
-    * Link file to the templates directory in Heroku (place under the BASE_DIR line),
+7. Link file to the templates directory in Heroku (place under the BASE_DIR line),
     TEMPLATES_DIR = os.path.join(BASE_DIR,
     'templates')
-    * Change the templates directory to TEMPLATES_DIR (place within the TEMPLATES array),
+8. Change the templates directory to TEMPLATES_DIR (place within the TEMPLATES array),
     'DIRS': [TEMPLATES_DIR
-    * Add Heroku Hostname to ALLOWED_HOSTS, 
+9. Add Heroku Hostname to ALLOWED_HOSTS, 
     ALLOWED_HOSTS =
     ["PROJ_NAME.herokuapp.com", "localhost"]
-    * In Gitpod, create 3 new folders on top level directory, media, static, templates
-    * Create procfile on the top level directory, Procfile
-    * In Procfile, add code, web: gunicorn PROJ_NAME.wsgi
-    * In terminal, add, commit and push by entering,
+10. In Gitpod, create 3 new folders on top level directory, media, static, templates
+11. Create procfile on the top level directory, Procfile
+12. In Procfile, add code, web: gunicorn PROJ_NAME.wsgi
+13. In terminal, add, commit and push by entering,
     git add .
     git commit -m “Deployment Commit”
     git push
-    * In Heroku, deploy content manually through heroku, e.g.  Github as deployment method, on main branch
+14. In Heroku, deploy content manually through heroku, e.g.  Github as deployment method, on main branch
+
+### Forking the Repository
+By forking the GitHub Repository we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository by using the following steps
+
+1. Log into [GitHub](https://github.com/login "Link to GitHub login page") or [create an account](https://github.com/join "Link to GitHub create account page").
+2. Locate the [GitHub Repository](https://github.com/Kat632/PP4-LettuceEat "Link to GitHub Repo").
+3. At the top of the repository, on the right side of the page, select "Fork"
+4. You should now have a copy of the original repository in your GitHub account.
+
+### Creating a Clone
+How to run this project locally:
+1. Install the [GitPod Browser](https://www.gitpod.io/docs/browser-extension/ "Link to Gitpod Browser extension download") Extension for Chrome.
+2. After installation, restart the browser.
+3. Log into [GitHub](https://github.com/login "Link to GitHub login page") or [create an account](https://github.com/join "Link to GitHub create account page").
+2. Locate the [GitHub Repository](https://github.com/Kat632/PP4-LettuceEat "Link to GitHub Repo").
+5. Click the green "GitPod" button in the top right corner of the repository.
+This will trigger a new gitPod workspace to be created from the code in github where you can work locally.
+
+How to run this project within a local IDE, such as VSCode:
+
+1. Log into [GitHub](https://github.com/login "Link to GitHub login page") or [create an account](https://github.com/join "Link to GitHub create account page").
+2. Locate the [GitHub Repository](https://github.com/Kat632/PP4-LettuceEat "Link to GitHub Repo").
+3. Under the repository name, click "Clone or download".
+4. In the Clone with HTTPs section, copy the clone URL for the repository.
+5. In your local IDE open the terminal.
+6. Change the current working directory to the location where you want the cloned directory to be made.
+7. Type 'git clone', and then paste the URL you copied in Step 3.
+```
+git clone https://github.com/USERNAME/REPOSITORY
+```
+8. Press Enter. Your local clone will be created.
+
+Further reading and troubleshooting on cloning a repository from GitHub [here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository "Link to GitHub troubleshooting")
+
 
 
 
