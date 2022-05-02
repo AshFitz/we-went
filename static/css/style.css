@@ -505,6 +505,10 @@ a .likes-hover:hover{
     border: none;
 }
 
+.alert-bg{
+    background-color: #C57B57;
+    color: #fefbf1;
+}
 
 
 /*--Media Queries--*/

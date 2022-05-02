@@ -1,11 +1,8 @@
-<div class="toast toast-styling rounded" data-autohide="true" data-delay="5000">
+<div class="toast toast-styling rounded" role="alert" aria-live="assertive" aria-atomic="true" >
     <div class="toast-header">
-        <strong class="mr-auto bg-warning">Warning!</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
+      <strong class="me-auto alert-bg">Warning!</strong>
     </div>
-    <div class="toast-body bg-white">
+    <div class="toast-body">
         {{ message }}
     </div>
-</div>
+  </div>
