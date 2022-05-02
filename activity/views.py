@@ -148,9 +148,12 @@ def add_post(request):
             post_form.save()
             messages.success(request, "Post Created!")
             return redirect("activity")
+        else:
+            messages.warning(request, "Your image file size is too big!")
+
     else:
         post_form = PostForm()
-
+        
     context = {
         'post_form': post_form
     }

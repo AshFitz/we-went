@@ -10,7 +10,7 @@
                 <form action="{% url 'add_post' %}" method="POST" enctype="multipart/form-data"> 
                     {% csrf_token %}
                     {{ post_form|crispy }}
-                    <button class="btn btn-success-post mt-3" id="add-post-button" aria-label="submit button">Submit</button>
+                    <button class="btn btn-success-post mt-3" type="submit" id="add-post-button" aria-label="submit button">Submit</button>
                 </form>
             </div>
         </div>
