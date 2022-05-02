@@ -231,10 +231,10 @@ This test has passed.
 -----
 
 ##### User Profile
-* Expectation
+* Expectation:
 Users can register, login and have a personal profile that contains posts they have liked and the posts they have added.
 
-* Implementation
+* Implementation:
 Django-Allauth was used to handle the registration of users. User profile model has custom fields when registering. Account dashboard that has the features, My Posts and My Likes. The user dashboard also has a logout section if the user decides to logout.
 
 * Test 
@@ -247,112 +247,112 @@ Django-Allauth was used to handle the registration of users. User profile model 
 * Result:
 Users can signup and a profile can be creates using signals. The user dashboard is interactive and the correct content is displayed.
 
-* Verdict
+* Verdict:
 This test has passed.
 
 -----
 
 ##### Activity Posts
-* Expectation
+* Expectation:
 View a list of posts, displaying the featured image, number of likes and the post title.
 
-* Implementation
+* Implementation:
 An activity posts page was created to display a list of cards providing the featured image, number of likes and the post title
 
 * Test 
     * While not logged into session: Navigate to the activity page and ensure the posts are displaying. Check each post displays the relevant information.
     * While logged into session: Navigate to the activity page and ensure the posts are displaying. Check each post displays the relevant information.
 
-* Result
+* Result:
 All the posts are displayed correctly. The information is also displayed correctly, the card provides the featured image, the post title and the number of likes.
 
-* Verdict
+* Verdict:
 This test has passed.
 
 -----
 
 ##### Post Like
-* Expectation
+* Expectation:
 Only a user that has logged in can interact with the like icon and add or remove a like.
 
-* Implementation
+* Implementation:
 Interaction with the like icon to like/unlike a post without reloading the page. This has been done with ajax. 
 
 * Test
     * While not logged into session: I can view the like icon however I can't interact with it.
     * While logged into session: I can interact with the like icon and like/unlike posts.
 
-* Result
+* Result:
 A user must be logged in to interact with the like icon, they can like or unlike posts. Users that are not logged in can view the icon however they are unable to like or unlike a post.
 
-* Verdict
+* Verdict:
 This test has passed.
 
 -----
 
 ##### My Posts & My Likes
-* Expectation
+* Expectation:
 A user should only have access to the posts they have liked and the posts they have added.
 
-* Implementation
+* Implementation:
 Jinja template was used to iterate over the posts results to check if the user is within the results and then display the results.
 
 * Test
      * While not logged into session: The user doesn't not have access to user dashboard so this content is not displayed.
      * While logged into session:  The user has access to the user dashboard and can toggle between the my posts and my likes and the correct content is displayed.
 
-* Result
+* Result:
 A user must be logged in to view the dashboard. The dashboard can then be used to view my posts and my likes. The correct posts are displaying based on the user.
 
-* Verdict
+* Verdict:
 This test has passed.
 
 -----
 
 ##### Post Detail Page
-* Expectation
+* Expectation:
 A user should be able to click on a post from the activity page and be redirected to the post detail page to display the post in full.
 
-* Implementation
+* Implementation:
 When you click on a post you are then redirected to the appropriate view which displays all the post information through jinja templating.
 
 * Test
      * While not logged into session: The user can click on the post from the activity page and is redirected to the post page and can view the post in full.
      * While logged into session:  The user can click on the post from the activity page and is redirected to the post page and can view the post in full.
 
-* Result
+* Result:
 A user can be logged in or logged out, and can click on a post from the activity page. The user is then directed to the post detail page. The post is displayed in full 
 
-* Verdict
+* Verdict:
 This test has passed.
 
 -----
 
 ##### Edit & Delete
-* Expectation
+* Expectation:
 A user should only be able to edit or delete a post or comment they have created.
 
-* Implementation
+* Implementation:
 Jinja template was used to iterate over the posts and comment results to check if the user is within the results and then display the requested results.
 
 * Test
      * While not logged into session: A user can only view their posts and comments from the activity page however they don't have permission to edit or delete them.
      * While logged into session:  The user can click the desired icons to edit or delete their posts or comments.
 
-* Result
+* Result:
 A user has to be logged in for the edit and delete options to appear on a post or a comment. This option is only given on cmoments or posts that specific user has created.
 
-* Verdict
+* Verdict:
 This test has passed.
 
 -----
 
 #### Toast Messages
 
-* Expectation
+* Expectation:
 Users are notified of their actions and or errors via a popup message.
 
-* Implementation
+* Implementation:
     * Using bootstrap toast system and linking it to django messages module, users are notified of many different actions throughout the application.
 
 * Test
@@ -365,32 +365,30 @@ Users are notified of their actions and or errors via a popup message.
     * Edit a post
     * Delete a post
 
-* Result
+* Result:
 Toast messages are displayed when all the above actions are performed, an error success or info toast is displayed to the user. This informs the user of their actions.
 
-#### Verdict
-
+* Verdict:
 This test has met expectations.
 
 -----
 
 #### Browser Compatibility
 
-* Expectation
+* Expectation:
 The application displays and functions on widely used browsers.
 
-* Implementation
+* Implementation:
 Use code that is widely supported.
 
 * Test
-The website was developed using the brave / chrome dev tools so it is fully functional. Testing of IE, Firefox and safari has not been completed.
+    * The website was developed using the brave / chrome dev tools so it is fully functional. Testing of IE, Firefox and safari has not been completed.
 All tests outlined above have been performed on browsers states above.
 
-* Result
+* Result:
 The application functions as intended on browsers.
 
-* Verdict
-
+* Verdict:
 This test has met expectations.
 
 
