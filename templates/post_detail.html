@@ -3,14 +3,36 @@
 
 
 {% block content %}
-<div class="container-fluid post-detail-container">
+<div class="container-fluid post-detail-container pt-5">
     <div class="container">
         <div class="row">
             <div class="col">
             <div class="col-12" id="post-panel-detail">
+                <div class="col-12 post-container-buttons">
+                    {% if request.user == post.author %} 
+                    <a href="{% url 'edit_post' post.id %}"><i class="fas fa-edit"></i></a>
+                    <a type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" aria-label="delete button" id="delete-button" ><i class="fas fa-trash-alt delete-post-btn"></i></a>
+                    {% endif%}
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete this post?</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <a type="button" class="btn btn-danger" aria-label="delete button" id="delete-button" href="{% url 'delete_post' post.id %}">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                
                 <div class="col-12">
                     <h2>{{ post.title }}</h2>
                 </div>
+                <hr class="about-line"></hr>
                 <div class="col-12">
                     <p class="post-description">{{ post.description | safe }}</p>
                 </div>
@@ -55,22 +77,20 @@
                     {%endif%}
                     </div>
                 </div>
+                <div class="col-12 mb-3">{{ post.user_profile}}</div>
                 <div class="col-12">
                     <img class="post-detail-image-container" src="{{ post.featured_image.url}}">
                 </div>
                 <div class="col-12 post-detail-like">
-                    <span>{{ post.like_count }}</span>
-                    <i class="fas fa-heart detail-like"></i>
+                    <button type="submit" name="post_id" value="{{post.id}}" class="like-button" data-url={% url 'like' %}><i class="fas fa-heart home-like">
+                    </i></button>
+                    <span id="{{post.id}}_like_count">{{ post.like_count }}</span>
                 </div>
-                {% if request.user == post.author %} 
-                <a href="{% url 'edit_post' post.id %}"><i class="fas fa-box">Edit</i></a>
-                {% endif%}
             </div>
             </div>  
         </div>
         {%if comments %}
         <div class="container comment-main-container">
-            
             {% for comment in comments %}
             <div class="col-12 comment-container">
                 <div class="row">
@@ -80,17 +100,52 @@
                     {% if comment.user == request.user %}
                     <div class="row d-inline button-grouper">
                         <div class="col d-inline"><a class="post-detail-buttons d-inline" href="{% url 'edit_comment' comment.id %}" aria-label="edit button"><i class="fas fa-comment-dots"></i></a></div>
-                        <div class="col d-inline"><a class="post-detail-buttons d-inline" href="{% url 'delete_comment' post.id %}"><i class="fas fa-trash"></i></a></div>
+                        <div class="col d-inline"><a class="post-detail-buttons d-inline" href="{% url 'delete_comment' comment.id %}"><i class="fas fa-trash"></i></a></div>
                     </div>
                     {% endif %}
                 </div>
             </div>
             {% endfor%}
-            {% else %}
-
-            {% endif%}
         </div>
+        {% endif%}
+            {% if user.is_authenticated %}
+            <div class="container comment-main-container-button">
+                <div class="col-12 comment-container">
+                    <div class="row">
+                        <div class="col">
+                            <a class="btn btn-comment" href="{% url 'comment' post.id %}">
+                                Add a comment...
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif%}
     </div>
 </div>
+
+<script>
+
+$(document).on('click', '.like-button', function (e) {
+    let btn = e.currentTarget.value
+    e.preventDefault();
+    let like_url = $('.like-button').attr("data-url")
+    $.ajax({
+        type: 'POST',
+        url: like_url,
+        data: {
+            postid: btn,
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            action: 'post',
+        },
+        success: function (json) {
+            document.getElementById(`${btn}_like_count`).innerHTML = json['result']
+        },
+        error: function (xhr, errmsg, err) {
+        }
+    });
+    })
+</script>
+
 
 {% endblock  %}
