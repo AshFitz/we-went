@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404, reverse, redirect
 from django.views import generic, View
 from django.db.models import Q
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.http import HttpResponseRedirect
@@ -55,8 +56,8 @@ class CommentList(View):
             comment.user = request.user
             comment.post = post
             comment.save()
-            return HttpResponseRedirect("/")
-
+            messages.success(request, 'Your comment has been added.')
+            return redirect(reverse('post_detail', args=[post.id]))
         else:
             comment_form = CommentForm()
 
@@ -76,22 +77,20 @@ View to edit a comment on a post
 """
 @login_required
 def edit_comment(request, comment_id):
-    
     user = get_object_or_404(Comment, pk=comment_id)
     if request.user == user.user:
         if request.method == "POST":
             form = CommentForm(request.POST, instance=user)
             if form.is_valid():
                 form.save()
-                # messages.success(request,')
+                messages.success(request, 'Comment edited.')
                 return redirect(reverse('activity'))
             else:
-                print("help")
-                # messages.error(request, f'Sorry please try again.')
+                messages.error(request, 'Sorry please try again.')
         else:
             form = CommentForm(instance=user)
     else:
-        #message.info(request, 'Oops this page is not for you')
+        messages.info(request, 'Oops this page is not for you')
         return redirect(reverse('activity'))
     template = 'edit_comment.html'
     context = {
@@ -105,7 +104,7 @@ def edit_comment(request, comment_id):
 def delete_comment(request, comment_id):
     users_comment = get_object_or_404(Comment, pk=comment_id)
     users_comment.delete()
-
+    messages.success(request, 'Comment deleted successfully')
     return redirect(reverse('activity'))
 
 """
@@ -128,7 +127,6 @@ def like(request):
             post.like_count += 1
             result = post.like_count
             post.save()
-
         return JsonResponse({'result': result, })
 
 """
@@ -145,8 +143,7 @@ def add_post(request):
             post_form.user_profile = profile
             post_form.author = request.user
             post_form.save()
-
-            #messages.success(request, "Post Created!")
+            messages.success(request, "Post Created!")
             return redirect("activity")
     else:
         post_form = PostForm()
@@ -171,15 +168,15 @@ def edit_post(request, post_id):
                 return redirect(reverse('edit_post', args=[post.id]))
             else:
                 print("do this")
-                #messages.error(request, "Failed to edit post. Please try again")
+                messages.error(request, "Failed to edit post. Please try again")
 
         else:
             form = PostForm(instance=post)
-            #messages.info(request, f'You are editing {post.tilte}')
+            messages.info(request, f'You are editing {post.title}')
     else: 
         return redirect(reverse('activity'))
         form = None
-        print('add a toast here')
+        messages.success(request, "Your post has been updated!")
 
     template = 'edit_post.html'
     context = {
@@ -197,7 +194,7 @@ View to delete a post and update the database
 def delete_post(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     post.delete()
-    #messages.sucess(request, 'You have deleted your post")
+    messages.success(request, 'Your post has been deleted')
 
     return redirect(reverse('activity'))
 
@@ -215,16 +212,14 @@ def search_posts(request):
             description__icontains=search) | Q(
             location__icontains=search)
         posts = posts.filter(queries)
-
         if not posts:
-            # messages.info(request, "Sorry we couldn't find a post that matched your search.")
+            messages.info(request, "Sorry we couldn't find a post that matched your search, here is some posts you may like")
             return redirect(reverse('activity'))
 
     context = {
         'post_search': posts,
         'search': search,
     }
-
     return render(request, 'searched_posts.html', context)
 
 
@@ -234,7 +229,6 @@ View to click into individual post
 def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     comments = post.comments.order_by("created_on")
-    # comments = Comment.objects.filter(post=post_id)
     context= {
         'post' : post,
         'comments' : comments
